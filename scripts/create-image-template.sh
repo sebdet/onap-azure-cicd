@@ -67,24 +67,29 @@ fi
 
 CURRENT_DIR=`pwd`
 cd $WORKING_DIR
-grep -R " onap/" * | sed  -e 's/charts\///g' | sed -e 's/\/values.yaml//g' | sed -e 's/values.yaml/'$COMPO_NAME'/g' | sed -e 's/image:\(.*\)/\n   image:\1\n   repositoryOverride: '$NEW_REGISTRY'/g' > $CURRENT_DIR/image-template-tmp.yaml
+grep -R " onap/" * > $CURRENT_DIR/image-template-tmp.yaml
+sed -i 's/charts\///g' $CURRENT_DIR/image-template-tmp.yaml
+sed -i 's/^values.yaml://g' $CURRENT_DIR/image-template-tmp.yaml
+sed -i 's/\/values.yaml//g' $CURRENT_DIR/image-template-tmp.yaml
+sed -i 's/\(.\+\)image:\(.*\)/\1\n   image:\2\n   repositoryOverride: '$NEW_REGISTRY'/g' $CURRENT_DIR/image-template-tmp.yaml
+sed -i 's/^image:\(.*\)/image:\1\nrepositoryOverride: '$NEW_REGISTRY'/g' $CURRENT_DIR/image-template-tmp.yaml
 
 #echo 'Found those images:' 
 #cat $CURRENT_DIR/image-template-tmp.yaml
 
 #echo 'New images /version template file:'
-cat $CURRENT_DIR/image-template-tmp.yaml | sed -e 's#'$OLD_URL_PREFIX'#'$NEW_URL_PREFIX'#g' | sed -e 's/[0-9]\+\.[0-9]\+.*$/'$NEW_VERSION'/g' > $CURRENT_DIR/image-template-tmp2.yaml
-#printf '\nglobal:\n   repository: '$NEW_REGISTRY'\n   repositoryCred:\n      user: '$REGISTRY_USER'\n      password: '$REGISTRY_PASSWORD'\n' >> $CURRENT_DIR/image-template-tmp2.yaml
+sed -i 's#'image: $OLD_URL_PREFIX/'#'image: $NEW_URL_PREFIX/'#g' $CURRENT_DIR/image-template-tmp.yaml
+sed -i 's/[0-9]\+\.[0-9]\+.*$/'$NEW_VERSION'/g' $CURRENT_DIR/image-template-tmp.yaml
 
 cd $CURRENT_DIR
 if [ -z "$OUTPUT_FILE" ]
 then
   ## Stdout case
-  cat $CURRENT_DIR/image-template-tmp2.yaml
+  cat $CURRENT_DIR/image-template-tmp.yaml
 else
   ## File case
-  cp $CURRENT_DIR/image-template-tmp2.yaml $OUTPUT_FILE
+  cp $CURRENT_DIR/image-template-tmp.yaml $OUTPUT_FILE
 fi
 
 ## Cleanup
-rm $CURRENT_DIR/image-template-tmp.yaml $CURRENT_DIR/image-template-tmp2.yaml
+rm $CURRENT_DIR/image-template-tmp.yaml
