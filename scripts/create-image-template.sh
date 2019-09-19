@@ -78,7 +78,7 @@ sed -i 's/^image:\(.*\)/image:\1\nrepositoryOverride: '$NEW_REGISTRY'/g' $CURREN
 #cat $CURRENT_DIR/image-template-tmp.yaml
 
 #echo 'New images /version template file:'
-sed -i 's#'image: $OLD_URL_PREFIX/'#'image: $NEW_URL_PREFIX/'#g' $CURRENT_DIR/image-template-tmp.yaml
+sed -i 's#image: '$OLD_URL_PREFIX'/#image: '$NEW_URL_PREFIX'/#g' $CURRENT_DIR/image-template-tmp.yaml
 sed -i 's/[0-9]\+\.[0-9]\+.*$/'$NEW_VERSION'/g' $CURRENT_DIR/image-template-tmp.yaml
 
 cd $CURRENT_DIR
