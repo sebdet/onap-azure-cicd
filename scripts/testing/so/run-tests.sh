@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ###
 # ============LICENSE_START=======================================================
 # ONAP CI/CD
@@ -50,8 +52,12 @@ fi
 
 ./robot/ete-k8s.sh onap health > ${RESULTS_DIR}/ete-k8s-health.log
 if (( $(grep -c "| FAIL |" ${RESULTS_DIR}/ete-k8s-health.log) > 0 ))
+then  
   cat ${RESULTS_DIR}/ete-k8s-health.log
-  exit 1
+  exit 0
+else
+  echo "HEALTHCHECK SUCCESS"
+  exit 0
 fi
 
 #./robot/ete-k8s.sh onap healthdist > ${RESULTS_DIR}/ete-k8s-healthdist.log
@@ -61,8 +67,12 @@ fi
 fi
 ./robot/demo-k8s.sh onap init > ${RESULTS_DIR}/demo-k8s-init.log
 if (( $(grep -c "| FAIL |" ${RESULTS_DIR}/demo-k8s-init.log) > 0 ))
+then
   cat ${RESULTS_DIR}/demo-k8s-init.log
   exit 1
+else
+  echo "INIT SUCCESS"
+  exit 0
 fi
 
 #./robot/demo-k8s.sh onap init_robot > ${RESULTS_DIR}/demo-k8s-init_robot.log
