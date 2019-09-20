@@ -35,7 +35,7 @@ helpFunction()
 }
 
 while getopts "d:c:p:n:v:o:r:u:s:" opt
-do<
+do
    case "$opt" in
       d ) OOM_DIR="$OPTARG" ;;
       o ) RESULTS_DIR="$OPTARG" ;;
