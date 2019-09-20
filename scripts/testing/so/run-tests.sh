@@ -50,7 +50,7 @@ then
    helpFunction
 fi
 
-./robot/ete-k8s.sh onap health > ${RESULTS_DIR}/ete-k8s-health.log
+$OOM_DIR/robot/ete-k8s.sh onap health > ${RESULTS_DIR}/ete-k8s-health.log
 if (( $(grep -c "| FAIL |" ${RESULTS_DIR}/ete-k8s-health.log) > 0 ))
 then  
   cat ${RESULTS_DIR}/ete-k8s-health.log
@@ -65,7 +65,7 @@ fi
 #  echo 'Found some errors in the Healhcheck'
 #  exit 1
 fi
-./robot/demo-k8s.sh onap init > ${RESULTS_DIR}/demo-k8s-init.log
+$OOM_DIR/robot/demo-k8s.sh onap init > ${RESULTS_DIR}/demo-k8s-init.log
 if (( $(grep -c "| FAIL |" ${RESULTS_DIR}/demo-k8s-init.log) > 0 ))
 then
   cat ${RESULTS_DIR}/demo-k8s-init.log
