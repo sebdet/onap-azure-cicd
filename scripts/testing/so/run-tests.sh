@@ -35,7 +35,7 @@ helpFunction()
 }
 
 while getopts "d:c:p:n:v:o:r:u:s:" opt
-do
+do<
    case "$opt" in
       d ) OOM_DIR="$OPTARG" ;;
       o ) RESULTS_DIR="$OPTARG" ;;
@@ -49,7 +49,7 @@ then
    echo "Some or all of the parameters are empty";
    helpFunction
 fi
-
+mkdir -p ${RESULTS_DIR}
 $OOM_DIR/robot/ete-k8s.sh onap health > ${RESULTS_DIR}/ete-k8s-health.log
 if (( $(grep -c "| FAIL |" ${RESULTS_DIR}/ete-k8s-health.log) > 0 ))
 then  
