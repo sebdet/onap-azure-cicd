@@ -4,6 +4,8 @@ node {
         echo 'Skipping build for now'
         echo "Building Component ${params.GERRIT_PROJECT}"
         //  build job: 'build-component', parameters: [string(name: 'GERRIT_CHANGE_NUMBER', value: env.GERRIT_CHANGE_NUMBER), string(name: 'GERRIT_PATCHSET_NUMBER', value: env.GERRIT_PATCHSET_NUMBER), string(name: 'GERRIT_REFSPEC', value: env.GERRIT_REFSPEC), string(name: 'ONAP_DOCKER_PREFIX', value: 'onap'), string(name: 'REGISTRY_DOCKER_PREFIX', value: 'new-onap'), string(name: 'PROJECT_REGISTRY', value: 'localhost:443'), string(name: 'PROJECT', value: env.GERRIT_PROJECT)]
+        //sh("git add ./test-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/*")
+
     }
     stage('Deploy New Docker For Component') {
         echo 'Skipping Deploy for now'
