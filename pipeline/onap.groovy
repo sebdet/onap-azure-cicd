@@ -16,11 +16,11 @@ node {
                   branches: [[name: 'FETCH_HEAD']], 
                   doGenerateSubmoduleConfigurations: false, 
                   extensions: [[$class: 'RelativeTargetDirectory', 
-                                relativeTargetDir: '$GERRIT_PROJECT']], 
+                                relativeTargetDir: '${GERRIT_PROJECT}']], 
                   submoduleCfg: [], 
                   userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
-                                       refspec: '$GERRIT_REFSPEC', 
-                                       url: 'ssh://OnapTesterBot@${GERRIT_HOST}:29418/clamp', 
+                                       refspec: '${GERRIT_REFSPEC}', 
+                                       url: 'ssh://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/${GERRIT_PROJECT}', 
                                        name: 'onap_project']]])
       
         sh("bash onap-azure-cicd/scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")
