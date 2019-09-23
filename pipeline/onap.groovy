@@ -5,10 +5,10 @@ node {
         //  build job: 'build-component', parameters: [string(name: 'GERRIT_CHANGE_NUMBER', value: env.GERRIT_CHANGE_NUMBER), string(name: 'GERRIT_PATCHSET_NUMBER', value: env.GERRIT_PATCHSET_NUMBER), string(name: 'GERRIT_REFSPEC', value: env.GERRIT_REFSPEC), string(name: 'ONAP_DOCKER_PREFIX', value: 'onap'), string(name: 'REGISTRY_DOCKER_PREFIX', value: 'new-onap'), string(name: 'PROJECT_REGISTRY', value: 'localhost:443'), string(name: 'PROJECT', value: env.GERRIT_PROJECT)]
         
         sh("pwd")
-        sh("bash ../scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")
+        sh("bash -x scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")
         def buildScript = load "build/${params.GERRIT_PROJECT}/build-component.groovy"
         buildScript.buildComponent()
-        sh("bash ../scripts/docker/retag-images.sh -p $ONAP_DOCKER_PREFIX -n $REGISTRY_DOCKER_PREFIX -r $REGISTRY_HOST -v $GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER")
+        sh("bash -x scripts/docker/retag-images.sh -p $ONAP_DOCKER_PREFIX -n $REGISTRY_DOCKER_PREFIX -r $REGISTRY_HOST -v $GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER")
     }
     stage('Deploy New Docker For Component') {
         echo 'Skipping Deploy for now'
