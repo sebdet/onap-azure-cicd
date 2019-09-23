@@ -20,7 +20,7 @@ node {
                   submoduleCfg: [], 
                   userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
                                        refspec: '$GERRIT_REFSPEC', 
-                                       url: 'ssh://OnapTesterBot@gerrit.onap.org:29418/clamp', 
+                                       url: 'ssh://OnapTesterBot@${GERRIT_HOST}:29418/clamp', 
                                        name: 'onap_project']]])
       
         sh("bash onap-azure-cicd/scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")
