@@ -11,3 +11,5 @@ def buildComponent() {
       sh "mvn clean install -P docker -Dmaven.test.skip=true"
     }
 }
+
+return this
