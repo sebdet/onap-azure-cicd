@@ -3,8 +3,9 @@ node {
    stage('Build New Docker') {
         echo "Building Component ${params.GERRIT_PROJECT}"
         //  build job: 'build-component', parameters: [string(name: 'GERRIT_CHANGE_NUMBER', value: env.GERRIT_CHANGE_NUMBER), string(name: 'GERRIT_PATCHSET_NUMBER', value: env.GERRIT_PATCHSET_NUMBER), string(name: 'GERRIT_REFSPEC', value: env.GERRIT_REFSPEC), string(name: 'ONAP_DOCKER_PREFIX', value: 'onap'), string(name: 'REGISTRY_DOCKER_PREFIX', value: 'new-onap'), string(name: 'PROJECT_REGISTRY', value: 'localhost:443'), string(name: 'PROJECT', value: env.GERRIT_PROJECT)]
-        git(url: 'git@github.com:sebdet/onap-azure-cicd.git',credentialsId: 'github-key-cicd-project', branch: 'master', destinationDir: 'onap-azure-cicd')
-        git(url: 'OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/$GERRIT_PROJECT',credentialsId: 'lf-key-onap-bot', branch: 'FETCH_HEAD', refspec: '$GERRIT_REFSPEC', destinationDir: '$GERRIT_PROJECT')
+        checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'onap-azure-cicd']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github-key-cicd-project', url: 'git@github.com:sebdet/onap-azure-cicd.git']]])  
+        checkout([$class: 'GitSCM', branches: [[name: 'FETCH_HEAD']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '$GERRIT_PROJECT']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', refspec: '$GERRIT_REFSPEC', url: 'ssh://OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/$GERRIT_PROJECT']]])  
+      git(url: 'OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/$GERRIT_PROJECT',credentialsId: 'lf-key-onap-bot', branch: 'FETCH_HEAD', refspec: '$GERRIT_REFSPEC', destinationDir: '$GERRIT_PROJECT')
       
         sh("bash onap-azure-cicd/scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")
         def buildScript = load "build/${params.GERRIT_PROJECT}/build-component.groovy"
