@@ -24,25 +24,33 @@
 helpFunction()
 {
    echo ""
-   echo "Usage: $0 -d /onap/kubernetes/oom -r dev-so -c so -f /onap/override-onap.yaml"
+   echo "Usage: $0 -d /onap/kubernetes/oom -r dev-so -c so -f /onap/override-onap.yaml -o ./deployment_result"
 
    echo -e "\t-d >> The OOM directory from where to upgrade the lab"
    echo -e "\t-r >> The component helm RELEASE name (dev-so, dev-clamp, ...)"
    echo -e "\t-c >> The component folder name in OOM folder"
    echo -e "\t-f >> The override file"
+   echo -e "\t-o >> The override file"
    exit 1 # Exit script after printing help
 }
 
-while getopts "d:r:c:f:" opt
+while getopts "d:r:c:f:o:" opt
 do
    case "$opt" in
       d ) OOM_DIR="$OPTARG" ;;
       r ) HELM_RELEASE_NAME="$OPTARG" ;;
       c ) COMPONENT_FOLDER="$OPTARG" ;;
       f ) OVERRIDE_FILE="$OPTARG" ;;
+      o ) OUTPUT_DIR="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
+
+if [ -z "$OOM_DIR" ] || [ -z "$HELM_RELEASE_NAME" ] || [ -z "$COMPONENT_FOLDER" ]  || [ -z "$OVERRIDE_FILE" ] || [ -z "$OUTPUT_DIR" ]
+then
+   echo "Some or all of the parameters are empty";
+   helpFunction
+fi
 
 cd $OOM_DIR
 helm upgrade $HELM_RELEASE_NAME $COMPONENT_FOLDER -f $OVERRIDE_FILE
@@ -50,18 +58,29 @@ helm upgrade $HELM_RELEASE_NAME $COMPONENT_FOLDER -f $OVERRIDE_FILE
 i=0
 TOTAL_LINES_FOR_COMPONENT=`kubectl get pods -n onap | grep $COMPONENT_FOLDER | wc -l`
 FAILING_PODS=$TOTAL_LINES_FOR_COMPONENT
-while [ $i -lt 10 ]
+while [ $i -lt 1 ]
 do
-   NB_LINES_RUNNING=`kubectl get pods -n onap |grep ${$COMPONENT_FOLDER} | grep 'Running' | wc -l`
-   echo 'Found $NB_LINES_RUNNING/$TOTAL_LINES_FOR_COMPONENT Pods in Running state'
-   FAILING_PODS = "$(($TOTAL_LINES_FOR_COMPONENT-$NB_LINES_RUNNING))"
+   NB_LINES_RUNNING=`kubectl get pods -n onap |grep $$COMPONENT_FOLDER | grep 'Running' | wc -l`
+   echo "Found ${NB_LINES_RUNNING}/${TOTAL_LINES_FOR_COMPONENT} Pods in Running state"
+   FAILING_PODS="$(($TOTAL_LINES_FOR_COMPONENT-$NB_LINES_RUNNING))"
    if [ $FAILING_PODS -eq 0 ] 
    then
-      echo 'All ${$COMPONENT_FOLDER} Pods Running'
+      echo "All ${$COMPONENT_FOLDER} Pods Running"
       break
    fi
    ((i++))
-   sleep 30
+   sleep 3
+done
+
+mkdir -p $OUTPUT_DIR
+
+kubectl get pods -n onap | grep $COMPONENT_FOLDER > $OUTPUT_DIR/pod-states.log
+
+PODS=$(kubectl get pods -n onap |grep clamp| cut -d' ' -f1)
+for POD in ${PODS}
+do
+   kubectl describe pod $POD -n onap > $OUTPUT_DIR/$POD-describe.log
+   kubectl logs $POD -n onap --all-containers > $OUTPUT_DIR/$POD-logs.log
 done
 
 exit $FAILING_PODS
