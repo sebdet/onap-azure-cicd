@@ -6,7 +6,7 @@ def buildComponent(componentPath='clamp') {
         // We recommend to define Maven settings.xml globally at the folder level using 
         // navigating to the folder configuration in the section "Pipeline Maven Configuration / Override global Maven configuration"
         // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
-        mavenSettingsFilePath: '/var/lib/jenkins/maven-settings.xml'
+        mavenSettingsFilePath: '/var/lib/jenkins/maven-settings.xml',
         mavenLocalRepo: '${WORKSPACE}/maven_repo') {
       // Run the maven build
         sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -P docker -Dmaven.test.skip=true"
