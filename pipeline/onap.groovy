@@ -41,20 +41,20 @@ node {
                           url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom', 
                           name: 'onap_oom_project']]])
             sh("make -C $OOM_FOLDER/kubernetes/ all")
-            sh("bash -x $WORKSPACE/scripts/create-image-template.sh -d $WORKSPACE/$OOM_FOLDER/kubernetes/$GERRIT_PROJECT -c $GERRIT_PROJECT -p $ONAP_DOCKER_PREFIX -r $REGISTRY_HOST -n $REGISTRY_DOCKER_PREFIX -v $GERRIT_REVIEW-$GERRIT_PATCHSET -o $WORKSPACE/$OOM_FOLDER/override-onap.yaml")
-            sh("bash -x $WORKSPACE/scripts/upgrade-component.sh -d $WORKSPACE/$OOM_FOLDER/kubernetes -r $HELM_RELEASE_NAME-$GERRIT_PROJECT -c $GERRIT_PROJECT -f $WORKSPACE/$OOM_FOLDER/override-onap.yaml")
+       sh("bash -x ${WORKSPACE}/scripts/create-image-template.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes/${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -p ${ONAP_DOCKER_PREFIX} -r ${REGISTRY_HOST} -n ${REGISTRY_DOCKER_PREFIX} -v ${GERRIT_REVIEW}-${GERRIT_PATCHSET} -o ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml")
+       sh("bash -x ${WORKSPACE}/scripts/upgrade-component.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes -r ${HELM_RELEASE_NAME}-${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -f ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml")
     }
     stage('Run Tests For Component') {
         echo "Testing Component  ${params.GERRIT_PROJECT} with changes from Review ${params.GERRIT_CHANGE_URL}"
         //build job: 'test-component', parameters: [string(name: 'OOM_FOLDER', value: '/var/lib/jenkins/workspace/deploy-component/oom')]
         git(url: 'git@github.com:sebdet/onap-azure-cicd.git',credentialsId: 'github-key-cicd-project', branch: "master")
-        TEST_STATUS = sh(returnStatus: true, script: "bash -x onap-azure-cicd/scripts/testing/$GERRIT_PROJECT/run-tests.sh -d /var/lib/jenkins/workspace/deploy-component/oom/kubernetes -o ./test-results/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER")
+        TEST_STATUS = sh(returnStatus: true, script: "bash -x onap-azure-cicd/scripts/testing/$GERRIT_PROJECT/run-tests.sh -d /var/lib/jenkins/workspace/deploy-component/oom/kubernetes -o ./test-results/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}")
         if (TEST_STATUS != 0) {
             
             // For SSH private key authentication, try the sshagent step from the SSH Agent plugin.
             sshagent (credentials: ['github-key-cicd-project']) {
-                sh("git add ./test-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/*")
-                sh('git commit -m \"Result of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
+               sh("git add ./test-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/*")
+               sh('git commit -m \"Result of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
                 sh('git push origin master')
             }
             sshagent (credentials: ['lf-key-onap-bot']) {
