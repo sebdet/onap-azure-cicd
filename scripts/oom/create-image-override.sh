@@ -39,23 +39,23 @@ helpFunction()
    exit 1 # Exit script after printing help
 }
 
-while getopts "d:c:p:n:v:o:r:u:s:" opt
+while getopts "d:c:p:r:n:v:o:" opt
 do
    case "$opt" in
       d ) WORKING_DIR="$OPTARG" ;;
       c ) COMPO_NAME="$OPTARG" ;;
       p ) OLD_URL_PREFIX="$OPTARG" ;;
+      r ) NEW_REGISTRY="$OPTARG" ;;
       n ) NEW_URL_PREFIX="$OPTARG" ;;
       v ) NEW_VERSION="$OPTARG" ;;
       o ) OUTPUT_FILE="$OPTARG" ;;
-      r ) NEW_REGISTRY="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
 
 # Print helpFunction in case parameters are empty
 #echo "PARAMETERS: $COMPO_NAME, $OLD_URL_PREFIX, $NEW_URL_PREFIX, $NEW_VERSION, $WORKING_DIR", "$OUTPUT_FILE"
-if [ -z "$COMPO_NAME" ] || [ -z "$OLD_URL_PREFIX" ] || [ -z "$NEW_URL_PREFIX" ] || [ -z "$NEW_VERSION" ] || [ -z "$WORKING_DIR" ] || [ -z "$NEW_REGISTRY" ]
+if [ -z "$WORKING_DIR" ] || [ -z "$COMPO_NAME" ] || [ -z "$OLD_URL_PREFIX" ] || [ -z "$NEW_REGISTRY" ] || [ -z "$NEW_URL_PREFIX" ] || [ -z "$NEW_VERSION" ]
 then
    echo "Some or all of the parameters are empty";
    helpFunction
