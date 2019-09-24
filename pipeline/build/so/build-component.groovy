@@ -1,4 +1,4 @@
-def buildComponent() {
+def buildComponent(componentPath='so') {
     withMaven(
         // Maven installation declared in the Jenkins "Global Tool Configuration"
         maven: 'Maven 3.6.2',
@@ -8,6 +8,6 @@ def buildComponent() {
         // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
         mavenSettingsFilePath: '/var/lib/jenkins/maven-settings.xml') {
       // Run the maven build
-      sh "mvn clean install -P docker -Dmaven.test.skip=true"
+      sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -P docker -Dmaven.test.skip=true"
     }
 }
