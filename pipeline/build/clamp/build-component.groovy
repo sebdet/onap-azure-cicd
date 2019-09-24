@@ -9,7 +9,7 @@ def buildComponent(componentPath='clamp') {
         mavenSettingsFilePath: '/var/lib/jenkins/maven-settings.xml'
     ) {
       // Run the maven build
-      sh "mvn -f componentPath/pom.xml --batch-mode clean install -P docker -Dmaven.test.skip=true"
+        sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -P docker -Dmaven.test.skip=true"
     }
 }
 
