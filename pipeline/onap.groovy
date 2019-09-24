@@ -25,7 +25,7 @@ node {
       
         sh("bash -x onap-azure-cicd/scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")
         def buildScript = load "onap-azure-cicd/pipeline/build/${params.GERRIT_PROJECT}/build-component.groovy"
-        buildScript.buildComponent()
+        buildScript.buildComponent(${params.GERRIT_PROJECT})
         sh("bash -x onap-azure-cicd/scripts/docker/retag-images.sh -p $ONAP_DOCKER_PREFIX -n $REGISTRY_DOCKER_PREFIX -r $REGISTRY_HOST -v $GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER")
     }
     stage('Deploy New Docker For Component') {
