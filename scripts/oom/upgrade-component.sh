@@ -46,3 +46,22 @@ done
 
 cd $OOM_DIR
 helm upgrade $HELM_RELEASE_NAME $COMPONENT_FOLDER -f $OVERRIDE_FILE
+
+i=0
+NB_LINE=`kubectl get pods -n onap | grep $COMPONENT_FOLDER | wc -l`
+SUCCESS=0
+while [ $i -lt 10 ]
+do
+   RESULT=`kubectl get pods -n onap |grep ${$COMPONENT_FOLDER} | grep 'Running' | wc -l`
+   echo 'Found $RESULT/$NB_LINE Pods in Running state'
+   if [ $RESULT -eq $NB_LINE ] 
+   then
+      echo 'All ${$COMPONENT_FOLDER} Pods Running'
+      $SUCCESS=1
+      break
+   fi
+   ((i++))
+   sleep 30
+done
+
+exit $SUCCESS
