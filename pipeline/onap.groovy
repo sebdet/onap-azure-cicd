@@ -31,8 +31,6 @@ node {
     stage('Deploy New Docker For Component') {
         echo "Deploying Component ${params.GERRIT_PROJECT} on Azure OOM lab"
         //  build job: 'deploy-component', parameters: [string(name: 'OOM_FOLDER', value: 'oom'), string(name: 'COMPONENT_NAME', value: env.GERRIT_PROJECT), string(name: 'ONAP_DOCKER_PREFIX', value: 'onap'), string(name: 'REGISTRY_DOCKER_PREFIX', value: 'new-onap'), string(name: 'GERRIT_REVIEW', value: env.GERRIT_CHANGE_NUMBER), string(name: 'GERRIT_PATCHSET', value: env.GERRIT_PATCHSET_NUMBER), string(name: 'HELM_RELEASE_NAME', value: 'cc697w-tdpi'), string(name: 'REGISTRY_DOCKER', value: 'onapci.westus2.cloudapp.azure.com:443')]
- 
-        sshagent (credentials: ['lf-key-onap-bot']) {
             checkout([$class: 'GitSCM', 
                   branches: [[name: 'master']], 
                   doGenerateSubmoduleConfigurations: false, 
@@ -42,9 +40,9 @@ node {
                   userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
                                        url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom', 
                                        name: 'onap_oom_project']]])
-            sh("cd ${OOM_FOLDER}/kubernetes/")
+            sh("cd $OOM_FOLDER/kubernetes/")
             sh("make all")
-            sh("bash -x $WORKSPACE/scripts/create-image-template.sh -d $WORKSPACE/$OOM_FOLDER/kubernetes/$GERRIT_PROJECT -c $GERRIT_PROJECT -p $ONAP_DOCKER_PREFIX -r $REGISTRY_HOST -n $REGISTRY_DOCKER_PREFIX -v $GERRIT_REVIEW-$GERRIT_PATCHSET -u none -s none -o $WORKSPACE/$OOM_FOLDER/override-onap.yaml")
+            sh("bash -x $WORKSPACE/scripts/create-image-template.sh -d $WORKSPACE/$OOM_FOLDER/kubernetes/$GERRIT_PROJECT -c $GERRIT_PROJECT -p $ONAP_DOCKER_PREFIX -r $REGISTRY_HOST -n $REGISTRY_DOCKER_PREFIX -v $GERRIT_REVIEW-$GERRIT_PATCHSET -o $WORKSPACE/$OOM_FOLDER/override-onap.yaml")
             sh("bash -x $WORKSPACE/scripts/upgrade-component.sh -d $WORKSPACE/$OOM_FOLDER/kubernetes -r $HELM_RELEASE_NAME-$GERRIT_PROJECT -c $GERRIT_PROJECT -f $WORKSPACE/$OOM_FOLDER/override-onap.yaml")
     }
     stage('Run Tests For Component') {
