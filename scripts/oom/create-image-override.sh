@@ -34,8 +34,6 @@ helpFunction()
    echo -e "\t-r >> The new docker registry url that must be inserted"
    echo -e "\t-n >> The new prefix that must be inserted"
    echo -e "\t-v >> The new version for each image found"
-   echo -e "\t-u >> The registry user"
-   echo -e "\t-s >> The registry password"
    echo -e "\t-o >> The output file path (optional), by default dump it to stdout"
 
    exit 1 # Exit script after printing help
@@ -51,15 +49,13 @@ do
       v ) NEW_VERSION="$OPTARG" ;;
       o ) OUTPUT_FILE="$OPTARG" ;;
       r ) NEW_REGISTRY="$OPTARG" ;;
-      u ) REGISTRY_USER="$OPTARG" ;;
-      s ) REGISTRY_PASSWORD="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
 
 # Print helpFunction in case parameters are empty
 #echo "PARAMETERS: $COMPO_NAME, $OLD_URL_PREFIX, $NEW_URL_PREFIX, $NEW_VERSION, $WORKING_DIR", "$OUTPUT_FILE"
-if [ -z "$COMPO_NAME" ] || [ -z "$OLD_URL_PREFIX" ] || [ -z "$NEW_URL_PREFIX" ] || [ -z "$NEW_VERSION" ] || [ -z "$WORKING_DIR" ] || [ -z "$NEW_REGISTRY" ] || [ -z "$REGISTRY_USER" ] || [ -z "$REGISTRY_PASSWORD" ]
+if [ -z "$COMPO_NAME" ] || [ -z "$OLD_URL_PREFIX" ] || [ -z "$NEW_URL_PREFIX" ] || [ -z "$NEW_VERSION" ] || [ -z "$WORKING_DIR" ] || [ -z "$NEW_REGISTRY" ]
 then
    echo "Some or all of the parameters are empty";
    helpFunction
