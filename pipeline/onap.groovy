@@ -41,6 +41,7 @@ node {
                                        url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom', 
                                        name: 'onap_oom_project']]])
             sh("cd $OOM_FOLDER/kubernetes/")
+            sh("pwd")
             sh("make all")
             sh("bash -x $WORKSPACE/scripts/create-image-template.sh -d $WORKSPACE/$OOM_FOLDER/kubernetes/$GERRIT_PROJECT -c $GERRIT_PROJECT -p $ONAP_DOCKER_PREFIX -r $REGISTRY_HOST -n $REGISTRY_DOCKER_PREFIX -v $GERRIT_REVIEW-$GERRIT_PATCHSET -o $WORKSPACE/$OOM_FOLDER/override-onap.yaml")
             sh("bash -x $WORKSPACE/scripts/upgrade-component.sh -d $WORKSPACE/$OOM_FOLDER/kubernetes -r $HELM_RELEASE_NAME-$GERRIT_PROJECT -c $GERRIT_PROJECT -f $WORKSPACE/$OOM_FOLDER/override-onap.yaml")
