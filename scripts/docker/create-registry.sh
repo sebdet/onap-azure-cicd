@@ -40,7 +40,7 @@ do
    case "$opt" in
       d ) FILES_DIR="$OPTARG" ;;
       c ) CERTIFICATE_FILENAME="$OPTARG" ;;
-      p ) KEY_FILENAME="$OPTARG" ;;
+      k ) KEY_FILENAME="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
