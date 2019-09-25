@@ -12,7 +12,7 @@ IP:             10.244.3.114
 Controlled By:  ReplicaSet/cc697w-tdpi-clamp-clamp-dash-kibana-58d786f4df
 Init Containers:
   clamp-dash-kibana-readiness:
-    Container ID:  docker://0f9e465e2afebcba49432a3722df77c3c60742050886d86a24896f9316ec58a3
+    Container ID:  docker://8f106c1efb825853dad7aa904b8f46cad93f870fa36d876fe917656fa1e0fde2
     Image:         oomk8s/readiness-check:2.0.0
     Image ID:      docker-pullable://oomk8s/readiness-check@sha256:7daa08b81954360a1111d03364febcb3dcfeb723bcc12ce3eb3ed3e53f2323ed
     Port:          <none>
@@ -23,14 +23,14 @@ Init Containers:
       --container-name
       clamp-dash-es
     State:          Running
-      Started:      Wed, 25 Sep 2019 10:54:24 +0000
+      Started:      Wed, 25 Sep 2019 12:35:24 +0000
     Last State:     Terminated
       Reason:       Error
       Exit Code:    1
-      Started:      Wed, 25 Sep 2019 10:44:16 +0000
-      Finished:     Wed, 25 Sep 2019 10:54:21 +0000
+      Started:      Wed, 25 Sep 2019 12:25:17 +0000
+      Finished:     Wed, 25 Sep 2019 12:35:21 +0000
     Ready:          False
-    Restart Count:  107
+    Restart Count:  117
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
@@ -90,5 +90,5 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:
   Type    Reason   Age                    From                               Message
   ----    ------   ----                   ----                               -------
-  Normal  Pulling  3m52s (x108 over 18h)  kubelet, aks-nodepool1-30751440-0  Pulling image "oomk8s/readiness-check:2.0.0"
-  Normal  Pulled   3m51s (x108 over 18h)  kubelet, aks-nodepool1-30751440-0  Successfully pulled image "oomk8s/readiness-check:2.0.0"
+  Normal  Pulling  7m40s (x118 over 19h)  kubelet, aks-nodepool1-30751440-0  Pulling image "oomk8s/readiness-check:2.0.0"
+  Normal  Pulled   7m39s (x118 over 19h)  kubelet, aks-nodepool1-30751440-0  Successfully pulled image "oomk8s/readiness-check:2.0.0"

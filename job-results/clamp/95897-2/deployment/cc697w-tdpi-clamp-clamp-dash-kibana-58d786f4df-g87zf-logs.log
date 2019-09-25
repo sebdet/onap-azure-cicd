@@ -1,80 +1,158 @@
-2019-09-25 10:54:24,986 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:54:25,848 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:54:30,860 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:54:31,776 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:54:36,786 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:54:37,614 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:54:42,627 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:54:43,457 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:54:48,469 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:54:49,334 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:54:54,346 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:54:55,176 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:00,188 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:01,020 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:06,032 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:06,867 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:11,880 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:12,683 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:17,696 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:18,520 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:23,533 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:24,387 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:29,396 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:30,222 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:35,232 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:36,159 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:41,172 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:42,056 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:47,070 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:47,884 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:52,896 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:53,753 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:55:58,766 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:55:59,584 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:04,596 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:05,441 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:10,458 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:11,284 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:16,296 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:17,135 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:22,146 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:22,961 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:27,969 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:28,778 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:33,788 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:34,613 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:39,624 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:40,483 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:45,496 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:46,311 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:51,320 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:52,147 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:56:57,157 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:56:57,961 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:02,972 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:03,828 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:08,837 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:09,652 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:14,664 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:15,578 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:20,588 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:21,410 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:26,420 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:27,254 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:32,264 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:33,120 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:38,137 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:38,960 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:43,972 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:44,801 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:49,812 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:50,639 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:57:55,651 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:57:56,459 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:58:01,468 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:58:02,313 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:58:07,325 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:58:08,155 - INFO - clamp-dash-es is not ready.
-2019-09-25 10:58:13,164 - INFO - Checking if clamp-dash-es  is ready
-2019-09-25 10:58:14,061 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:35:24,480 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:35:25,357 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:35:30,368 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:35:31,166 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:35:36,178 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:35:37,002 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:35:42,014 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:35:42,825 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:35:47,836 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:35:48,657 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:35:53,670 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:35:54,482 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:35:59,492 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:00,323 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:05,335 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:06,147 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:11,160 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:11,981 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:16,989 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:17,805 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:22,818 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:23,671 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:28,680 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:29,526 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:34,536 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:35,367 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:40,376 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:41,222 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:46,232 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:47,136 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:52,147 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:52,999 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:36:58,010 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:36:58,838 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:03,848 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:04,680 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:09,692 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:10,514 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:15,524 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:16,381 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:21,392 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:22,216 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:27,228 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:28,091 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:33,104 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:33,949 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:38,960 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:39,783 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:44,793 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:45,606 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:50,617 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:51,475 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:37:56,484 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:37:57,364 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:02,374 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:03,221 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:08,233 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:09,157 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:14,168 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:14,993 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:20,004 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:20,814 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:25,827 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:26,784 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:31,797 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:32,663 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:37,676 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:38,514 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:43,524 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:44,344 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:49,356 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:50,186 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:38:55,199 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:38:55,997 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:01,008 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:01,826 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:06,837 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:07,755 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:12,764 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:13,626 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:18,636 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:19,461 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:24,472 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:25,430 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:30,439 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:31,273 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:36,284 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:37,111 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:42,120 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:42,918 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:47,931 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:48,771 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:53,783 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:39:54,601 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:39:59,612 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:00,496 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:05,508 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:06,310 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:11,320 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:12,122 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:17,132 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:17,936 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:22,944 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:23,774 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:28,784 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:29,591 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:34,600 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:35,387 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:40,396 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:41,241 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:46,248 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:47,084 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:52,098 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:52,932 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:40:57,944 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:40:58,757 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:03,768 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:04,593 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:09,606 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:10,413 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:15,424 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:16,231 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:21,243 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:22,039 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:27,048 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:27,901 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:32,912 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:33,798 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:38,808 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:39,618 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:44,628 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:45,421 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:50,432 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:51,239 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:41:56,249 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:41:57,078 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:02,088 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:02,998 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:08,008 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:08,827 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:13,836 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:14,660 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:19,672 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:20,491 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:25,501 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:26,339 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:31,348 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:32,148 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:37,160 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:37,979 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:42,987 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:43,776 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:48,788 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:49,620 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:42:54,636 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:42:55,491 - INFO - clamp-dash-es is not ready.
+2019-09-25 12:43:00,500 - INFO - Checking if clamp-dash-es  is ready
+2019-09-25 12:43:01,350 - INFO - clamp-dash-es is not ready.

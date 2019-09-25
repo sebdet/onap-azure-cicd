@@ -41,3 +41,4 @@ Version: '10.3.12-MariaDB-1:10.3.12+maria~bionic'  socket: '/var/run/mysqld/mysq
 2019-09-20 17:02:51 38215 [Warning] Aborted connection 38215 to db: 'cldsdb4' user: 'clds' host: '10.244.3.93' (Got timeout reading communication packets)
 2019-09-20 17:16:53 38385 [Warning] Aborted connection 38385 to db: 'cldsdb4' user: 'clds' host: '10.244.3.93' (Got timeout reading communication packets)
 2019-09-24 17:03:20 107344 [Warning] Aborted connection 107344 to db: 'cldsdb4' user: 'clds' host: '10.244.3.116' (Got timeout reading communication packets)
+2019-09-25 11:08:30 120369 [Warning] Aborted connection 120369 to db: 'cldsdb4' user: 'clds' host: '10.244.3.116' (Got timeout reading communication packets)
