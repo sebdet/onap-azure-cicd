@@ -9,7 +9,6 @@ node {
         checkout([$class: 'GitSCM', 
                   branches: [[name: 'master']], 
                   doGenerateSubmoduleConfigurations: false, 
-                  clearWorkspace: true,
                   extensions: [[$class: 'RelativeTargetDirectory', 
                                  relativeTargetDir: 'onap-azure-cicd']], 
                   submoduleCfg: [], 
