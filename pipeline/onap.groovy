@@ -51,7 +51,7 @@ node {
          sshagent (credentials: ['github-key-cicd-project']) {
                sh("git --git-dir=${WORKSPACE}/onap-azure-cicd/.git add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/deployment/*")
                sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git commit -m \"Deployment of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
-               sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git push origin master')
+               sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git push pipeline_project master')
          }
          sshagent (credentials: ['lf-key-onap-bot']) {
                sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"WARNING: OOM deployment had issues, check the logs: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/deployment\"\' $GERRIT_PATCHSET_REVISION")
@@ -73,7 +73,7 @@ node {
             sshagent (credentials: ['github-key-cicd-project']) {
                sh("git --git-dir=${WORKSPACE}/onap-azure-cicd/.git add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/tests/*")
                sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git commit -m \"Result of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
-                sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git push origin master')
+                sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git push pipeline_project master')
             }
             sshagent (credentials: ['lf-key-onap-bot']) {
                 sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"ERROR: OOM tests have FAILED, check the results: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/tests\"\' $GERRIT_PATCHSET_REVISION")
