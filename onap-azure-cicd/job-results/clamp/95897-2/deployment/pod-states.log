@@ -1,0 +1,6 @@
+cc697w-tdpi-clamp-clamp-67cdd4dc56-wwkrx                          2/2     Running            0          17h
+cc697w-tdpi-clamp-clamp-backend-854cb4569b-9rnnv                  2/2     Running            0          17h
+cc697w-tdpi-clamp-clamp-dash-es-7b579d7566-8b45j                  0/1     ImagePullBackOff   0          17h
+cc697w-tdpi-clamp-clamp-dash-kibana-58d786f4df-g87zf              0/1     Init:0/1           106        17h
+cc697w-tdpi-clamp-clamp-dash-logstash-58cb5c9dc6-kntr8            0/1     Init:0/1           106        17h
+cc697w-tdpi-clamp-mariadb-5bf4d5c489-f9wbl                        1/1     Running            0          6d22h
