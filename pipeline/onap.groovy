@@ -41,7 +41,7 @@ node {
         echo "Retagging docker images with name prefix ${params.ONAP_DOCKER_PREFIX}/***:latest to name prefix ${params.REGISTRY_DOCKER_PREFIX}/***:${params.GERRIT_CHANGE_NUMBER}-${params.GERRIT_PATCHSET_NUMBER}"
         sh("bash -x onap-azure-cicd/scripts/docker/tag-images.sh -p $ONAP_DOCKER_PREFIX -n $REGISTRY_DOCKER_PREFIX -r $REGISTRY_HOST -v $GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER")
         sshagent (credentials: ['lf-key-onap-bot']) {
-               sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"$GERRIT_PROJECT Docker images built SUCCESSFULLY on AZURE\"\' $GERRIT_PATCHSET_REVISION")
+               sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"$GERRIT_PROJECT Docker images SUCCESSFULLY built on AZURE\"\' $GERRIT_PATCHSET_REVISION")
          }
     }
    stage('Clone OOM and build it') {
