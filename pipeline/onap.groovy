@@ -43,15 +43,15 @@ node {
             userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
                           url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom', 
                           name: 'onap_oom_project']]])
-        sh("make -C $OOM_FOLDER/kubernetes/ all")
-        sh("bash -x ${WORKSPACE}/onap-azure-cicd/scripts/oom/create-image-override.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes/${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -p ${ONAP_DOCKER_PREFIX} -r ${REGISTRY_HOST} -n ${REGISTRY_DOCKER_PREFIX} -v ${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER} -o ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml")
+        //sh("make -C $OOM_FOLDER/kubernetes/ all")
+        //sh("bash -x ${WORKSPACE}/onap-azure-cicd/scripts/oom/create-image-override.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes/${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -p ${ONAP_DOCKER_PREFIX} -r ${REGISTRY_HOST} -n ${REGISTRY_DOCKER_PREFIX} -v ${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER} -o ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml")
         UPGRADE_STATUS = sh(returnStatus: true, script: "bash -x ${WORKSPACE}/onap-azure-cicd/scripts/oom/upgrade-component.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes -r ${HELM_RELEASE_NAME}-${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -f ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml -o ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/deployment")
        if (UPGRADE_STATUS != 0) {
          // For SSH private key authentication, try the sshagent step from the SSH Agent plugin.
          sshagent (credentials: ['github-key-cicd-project']) {
-               sh("git add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/deployment/*")
-               sh('git commit -m \"Deployment of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
-               sh('git push origin master')
+               sh("git --git-dir=${WORKSPACE}/onap-azure-cicd add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/deployment/*")
+               sh('git --git-dir=${WORKSPACE}/onap-azure-cicd commit -m \"Deployment of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
+               sh('git --git-dir=${WORKSPACE}/onap-azure-cicd push origin master')
          }
          sshagent (credentials: ['lf-key-onap-bot']) {
                sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"WARNING: OOM deployment had issues, check the logs: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/deployment\"\' $GERRIT_PATCHSET_REVISION")
@@ -71,9 +71,9 @@ node {
             
             // For SSH private key authentication, try the sshagent step from the SSH Agent plugin.
             sshagent (credentials: ['github-key-cicd-project']) {
-               sh("git add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/tests/*")
-               sh('git commit -m \"Result of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
-                sh('git push origin master')
+               sh("git --git-dir=${WORKSPACE}/onap-azure-cicd add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/tests/*")
+               sh('git --git-dir=${WORKSPACE}/onap-azure-cicd commit -m \"Result of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
+                sh('git --git-dir=${WORKSPACE}/onap-azure-cicd push origin master')
             }
             sshagent (credentials: ['lf-key-onap-bot']) {
                 sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"ERROR: OOM tests have FAILED, check the results: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/tests\"\' $GERRIT_PATCHSET_REVISION")
