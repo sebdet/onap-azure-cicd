@@ -1,0 +1,180 @@
+Starting Xvfb on display :130 with res 1280x1024x24
+Executing robot tests at log level TRACE
+==============================================================================
+Testsuites                                                                    
+==============================================================================
+Testsuites.Health-Check :: Test that ONAP components are available via basi...
+==============================================================================
+Basic A&AI Health Check                                               | PASS |
+------------------------------------------------------------------------------
+Basic AAF Health Check                                                | PASS |
+------------------------------------------------------------------------------
+Basic AAF SMS Health Check                                            | PASS |
+------------------------------------------------------------------------------
+Basic APPC Health Check                                               | FAIL |
+Resolving variable '${resp.json()['output']['response-code']}' failed: JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+------------------------------------------------------------------------------
+Basic CLI Health Check                                                | PASS |
+------------------------------------------------------------------------------
+Basic CLAMP Health Check                                              | PASS |
+------------------------------------------------------------------------------
+Basic DCAE Health Check                                               | FAIL |
+500 != 200
+------------------------------------------------------------------------------
+Basic DMAAP Data Router Health Check                                  | PASS |
+------------------------------------------------------------------------------
+Basic DMAAP Message Router Health Check                               | PASS |
+------------------------------------------------------------------------------
+Basic DMAAP Bus Controller Health Check With Basic Auth               | PASS |
+------------------------------------------------------------------------------
+Basic External API NBI Health Check                                   | FAIL |
+ConnectionError: HTTPConnectionPool(host='nbi.onap', port=8080): Max retries exceeded with url: /nbi/api/v4/status (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2447699ed0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Log Elasticsearch Health Check                                  | FAIL |
+ConnectionError: HTTPConnectionPool(host='log-es.onap', port=9200): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2447688710>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Log Kibana Health Check                                         | FAIL |
+ConnectionError: HTTPConnectionPool(host='log-kibana.onap', port=5601): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2446ec7790>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Log Logstash Health Check                                       | FAIL |
+ConnectionError: HTTPConnectionPool(host='log-ls-http.onap', port=9600): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2446ec47d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Microservice Bus Health Check                                   | PASS |
+------------------------------------------------------------------------------
+Basic Multicloud API Health Check                                     | PASS |
+------------------------------------------------------------------------------
+Basic Multicloud-ocata API Health Check                               | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic Multicloud-pike API Health Check                                | PASS |
+------------------------------------------------------------------------------
+Basic Multicloud-starlingx API Health Check                           | PASS |
+------------------------------------------------------------------------------
+Basic Multicloud-titanium_cloud API Health Check                      | PASS |
+------------------------------------------------------------------------------
+Basic Multicloud-vio API Health Check                                 | PASS |
+------------------------------------------------------------------------------
+Basic Multicloud-k8s API Health Check                                 | PASS |
+------------------------------------------------------------------------------
+Basic OOF-Homing Health Check                                         | PASS |
+------------------------------------------------------------------------------
+Basic OOF-SNIRO Health Check                                          | PASS |
+------------------------------------------------------------------------------
+Basic OOF-CMSO Health Check                                           | FAIL |
+403 != 200
+------------------------------------------------------------------------------
+Basic Policy Health Check                                             | PASS |
+------------------------------------------------------------------------------
+Basic Pomba AAI-context-builder Health Check                          | FAIL |
+ConnectionError: HTTPConnectionPool(host='pomba-aaictxbuilder.onap', port=9530): Max retries exceeded with url: /aaicontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2446e77f90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba SDC-context-builder Health Check                          | FAIL |
+ConnectionError: HTTPConnectionPool(host='pomba-sdcctxbuilder.onap', port=9530): Max retries exceeded with url: /sdccontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2446ee7b10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba Network-discovery-context-builder Health Check            | FAIL |
+ConnectionError: HTTPConnectionPool(host='pomba-networkdiscoveryctxbuilder.onap', port=9530): Max retries exceeded with url: /ndcontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f244774d290>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba Service-Decomposition Health Check                        | FAIL |
+ConnectionError: HTTPConnectionPool(host='pomba-servicedecomposition.onap', port=9532): Max retries exceeded with url: /service-decomposition/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f24476d07d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba Network-Discovery-MicroService Health Check               | FAIL |
+ConnectionError: HTTPSConnectionPool(host='pomba-networkdiscovery.onap', port=9531): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f2447713c10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba Pomba-Kibana Health Check                                 | FAIL |
+ConnectionError: HTTPSConnectionPool(host='pomba-kibana.onap', port=5601): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f2446e26650>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba Elastic-Search Health Check                               | FAIL |
+ConnectionError: HTTPConnectionPool(host='pomba-es.onap', port=9200): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f244760cd90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba Sdnc-Context-Builder Health Check                         | FAIL |
+ConnectionError: HTTPConnectionPool(host='pomba-sdncctxbuilder.onap', port=9530): Max retries exceeded with url: /sdnccontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2446db1910>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Pomba Context-Aggregator Health Check                           | FAIL |
+ConnectionError: HTTPConnectionPool(host='pomba-contextaggregator.onap', port=9529): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f244830ca10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Portal Health Check                                             | FAIL |
+Test timeout 20 seconds exceeded.
+------------------------------------------------------------------------------
+Basic SDC Health Check                                                | FAIL |
+SDC DOWN: 500 != 200
+------------------------------------------------------------------------------
+Basic SDNC Health Check                                               | FAIL |
+Resolving variable '${resp.json()['output']['response-code']}' failed: JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+------------------------------------------------------------------------------
+Basic SO Health Check                                                 | PASS |
+------------------------------------------------------------------------------
+Basic UseCaseUI API Health Check                                      | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC catalog API Health Check                                    | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC emsdriver API Health Check                                  | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC gvnfmdriver API Health Check                                | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC huaweivnfmdriver API Health Check                           | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC jujuvnfmdriver API Health Check                             | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC multivimproxy API Health Check                              | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC nokiav2driver API Health Check                              | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC nslcm API Health Check                                      | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC resmgr API Health Check                                     | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC vnflcm API Health Check                                     | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC vnfmgr API Health Check                                     | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC vnfres API Health Check                                     | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC workflow API Health Check                                   | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC ztesdncdriver API Health Check                              | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VFC ztevnfmdriver API Health Check                              | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic VID Health Check                                                | PASS |
+------------------------------------------------------------------------------
+Basic VNFSDK Health Check                                             | FAIL |
+ConnectionError: HTTPConnectionPool(host='refrepo.onap', port=8702): Max retries exceeded with url: /onapapi/vnfsdk-marketplace/v1/PackageResource/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f2447a31650>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+------------------------------------------------------------------------------
+Basic Holmes Rule Management API Health Check                         | PASS |
+------------------------------------------------------------------------------
+Basic Holmes Engine Management API Health Check                       | PASS |
+------------------------------------------------------------------------------
+Basic Multicloud-fcaps API Health Check                               | PASS |
+------------------------------------------------------------------------------
+Basic Modeling genericparser API Health Check                         | FAIL |
+502 != 200
+------------------------------------------------------------------------------
+Basic CDS Health Check                                                | PASS |
+------------------------------------------------------------------------------
+Testsuites.Health-Check :: Test that ONAP components are available... | FAIL |
+62 critical tests, 24 passed, 38 failed
+62 tests total, 24 passed, 38 failed
+==============================================================================
+Testsuites                                                            | FAIL |
+62 critical tests, 24 passed, 38 failed
+62 tests total, 24 passed, 38 failed
+==============================================================================
+Output:  /share/logs/0040_ete_health/output.xml
+Log:     /share/logs/0040_ete_health/log.html
+Report:  /share/logs/0040_ete_health/report.html
