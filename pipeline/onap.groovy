@@ -28,7 +28,7 @@ node {
                                        url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/${GERRIT_PROJECT}', 
                                        name: 'onap_project']]])
    }
-   stage('Create docker registry') {
+   stage('Purge and create docker registry') {
       echo "Creating Docker registry on ${params.REGISTRY_HOST}, certif: ${params.CERTIFICATE_FOLDER}, key: ${params.KEY_FILENAME}"
       sh("bash -x onap-azure-cicd/scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")   
    }
