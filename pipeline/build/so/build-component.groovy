@@ -9,7 +9,7 @@ def buildComponent(componentPath='so') {
         mavenSettingsFilePath: '/var/lib/jenkins/maven-settings.xml',
         mavenLocalRepo: '${WORKSPACE}/maven_repo') {
        // Run the maven build
-       sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -Dmaven.javadoc.skip=true -Dadditionalparam=-Xdoclint:none -Dmaven.test.skip=true -P docker"
+       sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -Dmaven.javadoc.skip=true -Dadditionalparam=-Xdoclint:none -Dmaven.test.skip=true -Dmaven.test.skip=true -P docker"
     }
 }
 
