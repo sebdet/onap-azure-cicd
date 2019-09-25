@@ -44,15 +44,18 @@ node {
         sh("bash -x ${WORKSPACE}/onap-azure-cicd/scripts/oom/create-image-override.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes/${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -p ${ONAP_DOCKER_PREFIX} -r ${REGISTRY_HOST} -n ${REGISTRY_DOCKER_PREFIX} -v ${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER} -o ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml")
         UPGRADE_STATUS = sh(returnStatus: true, script: "bash -x ${WORKSPACE}/onap-azure-cicd/scripts/oom/upgrade-component.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes -r ${HELM_RELEASE_NAME}-${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -f ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml -o ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/deployment")
        if (UPGRADE_STATUS != 0) {
-         currentBuild.currentResult="UNSTABLE"
          // For SSH private key authentication, try the sshagent step from the SSH Agent plugin.
          sshagent (credentials: ['github-key-cicd-project']) {
                sh("git add ${WORKSPACE}/onap-azure-cicd/scripts/oom/upgrade-component.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes -r ${HELM_RELEASE_NAME}-${GERRIT_PROJECT} -c ${GERRIT_PROJECT} -f ${WORKSPACE}/${OOM_FOLDER}/override-onap.yaml -o ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/deployment/*")
-               sh('git commit -m \"Result of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
+               sh('git commit -m \"Deployment of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
                sh('git push origin master')
          }
          sshagent (credentials: ['lf-key-onap-bot']) {
-               sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"Check result here: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/deployment\"\' $GERRIT_PATCHSET_REVISION")
+               sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"WARNING: OOM deployment had issues, check the logs: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/deployment\"\' $GERRIT_PATCHSET_REVISION")
+         }
+       } else {
+           sshagent (credentials: ['lf-key-onap-bot']) {
+               sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"OOM deployment SUCCESSFUL\"\' $GERRIT_PATCHSET_REVISION")
          }
        }
     }
@@ -70,9 +73,14 @@ node {
                 sh('git push origin master')
             }
             sshagent (credentials: ['lf-key-onap-bot']) {
-                sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"Check result here: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/tests\"\' $GERRIT_PATCHSET_REVISION")
+                sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"ERROR: OOM tests have FAILED, check the results: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/tests\"\' $GERRIT_PATCHSET_REVISION")
             }
             error("Build failed because of Tests failure")
+        } else {
+            echo "Tests SUCCESSFUL"
+            sshagent (credentials: ['lf-key-onap-bot']) {
+                sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"OOM tests SUCCESSFUL\"\' $GERRIT_PATCHSET_REVISION")
+            }
         }
     }
 }
