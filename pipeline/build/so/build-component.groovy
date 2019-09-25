@@ -10,7 +10,7 @@ def buildComponent(componentPath='so') {
         mavenLocalRepo: '${WORKSPACE}/maven_repo') {
        // Run the maven build
         
-       sh "mvn -f ${componentPath}/pom.xml --batch-mode --no-transfer-progress  clean install -U -DskipTests=true -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dadditionalparam=-Xdoclint:none -P docker"
+       sh "mvn -f ${componentPath}/pom.xml --batch-mode --no-transfer-progress  clean install -U -DskipITs -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dadditionalparam=-Xdoclint:none -P docker"
     }
 }
 
