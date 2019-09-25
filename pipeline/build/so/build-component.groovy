@@ -8,7 +8,9 @@ def buildComponent(componentPath='so') {
         // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
         mavenSettingsFilePath: '/var/lib/jenkins/maven-settings.xml',
         mavenLocalRepo: '${WORKSPACE}/maven_repo') {
-      // Run the maven build
-      sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -P docker -Dmaven.test.skip=true"
+       // Run the maven build
+       sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -P docker -Dmaven.test.skip=true"
     }
 }
+
+return this
