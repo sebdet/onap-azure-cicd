@@ -1,5 +1,5 @@
 node {
-   currentBuild.displayName = "${params.GERRIT_PROJECT}(${params.GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER})"
+   currentBuild.displayName = "${params.GERRIT_PROJECT} (${params.GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER})"
    currentBuild.description = "Review URL: ${params.GERRIT_CHANGE_URL}"
    
    def mvnHome
