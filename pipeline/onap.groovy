@@ -31,7 +31,13 @@ node {
             branches: [[name: '*/master']], 
             doGenerateSubmoduleConfigurations: true, 
             extensions: [[$class: 'RelativeTargetDirectory', 
-                          relativeTargetDir: '${OOM_FOLDER}']
+                          relativeTargetDir: '${OOM_FOLDER}'],
+                         [$class: 'SubmoduleOption',
+                                      disableSubmodules: false,
+                                      parentCredentials: true,
+                                      recursiveSubmodules: true,
+                                      reference: '',
+                                      trackingSubmodules: false]
   ], 
             
             userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
