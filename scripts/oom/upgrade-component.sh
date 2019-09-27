@@ -74,9 +74,9 @@ done
 
 mkdir -p $OUTPUT_DIR
 
-kubectl get pods -n onap | grep $COMPONENT_FOLDER > $OUTPUT_DIR/pod-states.log
+kubectl get pods -n onap | grep "-$COMPONENT_FOLDER" > $OUTPUT_DIR/pod-states.log
 
-PODS=$(kubectl get pods -n onap |grep clamp| cut -d' ' -f1)
+PODS=$(kubectl get pods -n onap |grep "-$COMPONENT_FOLDER" | cut -d' ' -f1)
 for POD in ${PODS}
 do
    kubectl describe pod $POD -n onap > $OUTPUT_DIR/$POD-describe.log
