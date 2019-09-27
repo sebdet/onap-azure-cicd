@@ -11,7 +11,7 @@ def buildComponent(componentPath='so') {
         jdk: "OpenJDK-8") {
        // Run the maven build
         
-       sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -DskipITs -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dadditionalparam=-Xdoclint:none -P docker"
+       sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -DskipITs -DskipTests -Dformat.skipValidate=true -Dformat.skipExecute=true -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dadditionalparam=-Xdoclint:none -P docker"
     }
 }
 
