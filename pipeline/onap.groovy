@@ -56,7 +56,6 @@ node {
                                  disableSubmodules: false, 
                                  parentCredentials: true, 
                                  recursiveSubmodules: true, 
-                                 reference: '', 
                                  trackingSubmodules: false
                               ]], 
             submoduleCfg: [], 
