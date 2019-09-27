@@ -57,8 +57,9 @@ fi
 DOCKERS=$(docker images | grep -v SNAPSHOT | grep ${ONAP_DOCKER_PREFIX} | grep latest | cut -d' '  -f1)
 for docker_image in ${DOCKERS}
 do 
-	echo "Working on Image: ${docker_image}"
-    component=$(echo ${docker_image} | rev | cut -d/ -f1 | rev)
+    echo "Working on Image: ${docker_image}"
+    #component=$(echo ${docker_image} | rev | cut -d/ -f1 | rev)
+    component=$(echo ${docker_image}|sed -e "s/${ONAP_DOCKER_PREFIX\///g")
     echo "Component found: ${component}"
     echo "RETAGGING ${docker_image}:latest as ${REGISTRY_DOCKER_PREFIX}/${component}:${NEW_VERSION}"
     docker tag ${docker_image}:latest ${NEW_REGISTRY}/${REGISTRY_DOCKER_PREFIX}/${component}:${NEW_VERSION}
