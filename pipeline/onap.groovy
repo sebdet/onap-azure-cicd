@@ -86,7 +86,7 @@ node {
         echo "Testing Component  ${params.GERRIT_PROJECT} with changes from Review ${params.GERRIT_CHANGE_URL}"
         //build job: 'test-component', parameters: [string(name: 'OOM_FOLDER', value: '/var/lib/jenkins/workspace/deploy-component/oom')]
         //git(url: 'git@github.com:sebdet/onap-azure-cicd.git',credentialsId: 'github-key-cicd-project', branch: "master")
-        TEST_STATUS = sh(returnStatus: true, script: "bash -x onap-azure-cicd/scripts/testing/$GERRIT_PROJECT/run-tests.sh -d /var/lib/jenkins/workspace/deploy-component/oom/kubernetes -o ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/tests")
+        TEST_STATUS = sh(returnStatus: true, script: "bash -x onap-azure-cicd/scripts/testing/$GERRIT_PROJECT/run-tests.sh -d ${WORKSPACE}/onap-azure-cicd/${OOM_FOLDER}/kubernetes -o ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/tests")
         if (TEST_STATUS != 0) {
             
             // For SSH private key authentication, try the sshagent step from the SSH Agent plugin.
