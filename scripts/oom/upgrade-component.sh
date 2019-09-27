@@ -56,11 +56,11 @@ cd $OOM_DIR
 helm upgrade $HELM_RELEASE_NAME $COMPONENT_FOLDER -f $OVERRIDE_FILE
 
 i=0
-TOTAL_LINES_FOR_COMPONENT=`kubectl get pods -n onap | grep $COMPONENT_FOLDER | wc -l`
+TOTAL_LINES_FOR_COMPONENT=`kubectl get pods -n onap | grep "-$COMPONENT_FOLDER" | wc -l`
 FAILING_PODS=$TOTAL_LINES_FOR_COMPONENT
 while [ $i -lt 15 ]
 do
-   NB_LINES_RUNNING=`kubectl get pods -n onap |grep $COMPONENT_FOLDER | grep 'Running' | wc -l`
+   NB_LINES_RUNNING=`kubectl get pods -n onap |grep "-$COMPONENT_FOLDER" | grep 'Running' | wc -l`
    echo "Found ${NB_LINES_RUNNING}/${TOTAL_LINES_FOR_COMPONENT} Pods in Running state"
    FAILING_PODS="$(($TOTAL_LINES_FOR_COMPONENT-$NB_LINES_RUNNING))"
    if [ $FAILING_PODS -eq 0 ] 
