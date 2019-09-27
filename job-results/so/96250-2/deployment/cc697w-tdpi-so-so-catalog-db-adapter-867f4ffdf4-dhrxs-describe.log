@@ -1,0 +1,94 @@
+Name:           cc697w-tdpi-so-so-catalog-db-adapter-867f4ffdf4-dhrxs
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-30751440-2/169.1.0.4
+Start Time:     Fri, 27 Sep 2019 13:07:54 +0000
+Labels:         app=so-catalog-db-adapter
+                pod-template-hash=867f4ffdf4
+                release=cc697w-tdpi-so
+Annotations:    <none>
+Status:         Running
+IP:             10.244.6.76
+Controlled By:  ReplicaSet/cc697w-tdpi-so-so-catalog-db-adapter-867f4ffdf4
+Init Containers:
+  so-catalog-db-adapter-readiness:
+    Container ID:  docker://da6a8730460d3c2c031bec89d93d980d7ebd9827c36ed32c756fa95d465c0a72
+    Image:         oomk8s/readiness-check:2.0.2
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/job_complete.py
+    Args:
+      --job-name
+      cc697w-tdpi-so-so-mariadb-config-job
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Fri, 27 Sep 2019 13:07:59 +0000
+      Finished:     Fri, 27 Sep 2019 13:08:10 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Containers:
+  so-catalog-db-adapter:
+    Container ID:   docker://838c2a70aaccac42aafe77e3e9f1c9745266a73a63751d4c3e99cf13106d3479
+    Image:          onapci.westus2.cloudapp.azure.com:443/new-build/so/catalog-db-adapter:96250-2
+    Image ID:       docker-pullable://onapci.westus2.cloudapp.azure.com:443/new-build/so/catalog-db-adapter@sha256:322c1fdf253055f0f8527728cc709b809592bd7a0c7884aec67706d2eaf646b9
+    Port:           8082/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 27 Sep 2019 15:01:29 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     2
+      memory:  4Gi
+    Requests:
+      cpu:     500m
+      memory:  1Gi
+    Liveness:  http-get http://:8082/manage/health delay=600s timeout=10s period=60s #success=1 #failure=3
+    Environment Variables from:
+      cc697w-tdpi-so-so-catalog-db-adapter-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:            <set to the key 'mariadb.readwrite.host' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_PORT:            <set to the key 'mariadb.readwrite.port' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:        <set to the key 'mariadb.readwrite.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:        <set to the key 'mariadb.readwrite.password' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:  <set to the key 'mariadb.admin.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:  <set to the key 'mariadb.admin.password' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697w-tdpi-so-so-catalog-db-adapter-app-configmap
+    Optional:  false
+  default-token-9l7dw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9l7dw
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason   Age                   From                               Message
+  ----     ------   ----                  ----                               -------
+  Warning  Failed   17m (x458 over 121m)  kubelet, aks-nodepool1-30751440-2  Error: ImagePullBackOff
+  Normal   BackOff  12m (x480 over 121m)  kubelet, aks-nodepool1-30751440-2  Back-off pulling image "onapci.westus2.cloudapp.azure.com:443/new-build/so/catalog-db-adapter:96250-2"

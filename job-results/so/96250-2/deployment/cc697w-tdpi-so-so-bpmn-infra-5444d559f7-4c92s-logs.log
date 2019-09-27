@@ -1,0 +1,19 @@
+2019-09-27 13:08:01,118 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+2019-09-27 13:08:01,162 - INFO - cc697w-tdpi-so-so-mariadb-config-job has not succeeded yet
+2019-09-27 13:08:06,165 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+2019-09-27 13:08:06,172 - INFO - cc697w-tdpi-so-so-mariadb-config-job has not succeeded yet
+2019-09-27 13:08:11,177 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+Installing onap-ca.crt in /usr/local/share/ca-certificates
+WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
+JVM Arguments:  -Djava.security.egd=file:/dev/./urandom -Dlogs_dir=./logs/bpmn/ -Dlogging.config=/app/logback-spring.xml  -Dspring.config.additional-location=/app/config/override.yaml  
+
+ ____                                 _         ____  ____  __  __
+/ ___| __ _ _ __ ___  _   _ _ __   __| | __ _  | __ )|  _ \|  \/  |
+| |   / _` | '_ ` _ \| | | | '_ \ / _` |/ _` | |  _ \| |_) | |\/| |
+| |__| (_| | | | | | | |_| | | | | (_| | (_| | | |_) |  __/| |  | |
+\____/\__,_|_| |_| |_|\__,_|_| |_|\__,_|\__,_| |____/|_|   |_|  |_|
+
+  Spring-Boot:  (v2.1.5.RELEASE)
+  Camunda BPM: (v7.10.0)
+  Camunda BPM Spring Boot Starter: (v3.2.0)
+
