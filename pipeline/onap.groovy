@@ -27,6 +27,21 @@ node {
                                        refspec: '${GERRIT_REFSPEC}', 
                                        url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/${GERRIT_PROJECT}', 
                                        name: 'onap_project']]])
+            checkout([$class: 'GitSCM', 
+            branches: [[name: 'master']], 
+            doGenerateSubmoduleConfigurations: true, 
+            extensions: [[$class: 'RelativeTargetDirectory', 
+                          relativeTargetDir: '${OOM_FOLDER}'],
+                         [$class: 'SubmoduleOption', 
+                                 disableSubmodules: false, 
+                                 parentCredentials: true, 
+                                 recursiveSubmodules: true, 
+                                 trackingSubmodules: false
+                              ]], 
+            submoduleCfg: [], 
+            userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
+                          url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom', 
+                          name: 'onap_oom_project']]])
    }
    stage('Purge and create docker registry') {
       echo "Creating Docker registry on ${params.REGISTRY_HOST}, certif: ${params.CERTIFICATE_FOLDER}, key: ${params.KEY_FILENAME}"
