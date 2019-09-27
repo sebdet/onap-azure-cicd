@@ -40,7 +40,7 @@ node {
                                       trackingSubmodules: false]], 
             submoduleCfg: [],
             userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
-                          url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom/.git', 
+                          url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom.git', 
                           name: 'onap_oom_project']]])
             
    }
