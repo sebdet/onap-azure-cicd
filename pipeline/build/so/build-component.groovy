@@ -8,7 +8,7 @@ def buildComponent(componentPath='so') {
         // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
         mavenSettingsFilePath: '/var/lib/jenkins/maven-settings.xml',
         mavenLocalRepo: '${WORKSPACE}/maven_repo',
-        jdk: "OpenJDK-11") {
+        jdk: "OracleJDK-8") {
        // Run the maven build
         
        sh "mvn -f ${componentPath}/pom.xml --batch-mode --no-transfer-progress  clean install -U -DskipITs -DskipTests -Dmaven.test.skip=true -Dmaven.javadoc.skip=true -Dadditionalparam=-Xdoclint:none -P docker"
