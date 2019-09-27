@@ -38,7 +38,7 @@ node {
                                  recursiveSubmodules: true, 
                                  trackingSubmodules: true
                               ]], 
-            submoduleCfg: [], 
+            
             userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
                           url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom', 
                           name: 'onap_oom_project']]])
