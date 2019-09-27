@@ -29,7 +29,6 @@ node {
                                        name: 'onap_project']]])
             checkout([$class: 'GitSCM', 
             branches: [[name: '*/master']], 
-            doGenerateSubmoduleConfigurations: true, 
             extensions: [[$class: 'RelativeTargetDirectory', 
                           relativeTargetDir: '${OOM_FOLDER}'],
                          [$class: 'SubmoduleOption',
@@ -37,7 +36,7 @@ node {
                                       parentCredentials: true,
                                       recursiveSubmodules: true,
                                       reference: '',
-                                      trackingSubmodules: false]
+                                      trackingSubmodules: true]
   ], 
             
             userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
