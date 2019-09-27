@@ -31,13 +31,8 @@ node {
             branches: [[name: '*/master']], 
             doGenerateSubmoduleConfigurations: false, 
             extensions: [[$class: 'RelativeTargetDirectory', 
-                          relativeTargetDir: '${OOM_FOLDER}'],
-                         [$class: 'SubmoduleOption', 
-                                 disableSubmodules: false, 
-                                 parentCredentials: true, 
-                                 recursiveSubmodules: true, 
-                                 trackingSubmodules: true
-                              ]], 
+                          relativeTargetDir: '${OOM_FOLDER}']
+  ], 
             
             userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
                           url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom', 
