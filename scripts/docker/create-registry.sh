@@ -52,8 +52,11 @@ then
    helpFunction
 fi
 
+echo 'Doing some cleanup in docker before starting registry'
 docker stop registry || true
 docker rm registry || true
-docker system prune -f
+docker system prune -fa
+docker volume prune -f
+docker images purge
 #docker run -d -p 5000:5000 --restart=always --name registry registry:2
 docker run -d --restart=always --name registry -v $FILES_DIR:/certs -e REGISTRY_HTTP_ADDR=0.0.0.0:443 -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/$CERTIFICATE_FILENAME -e REGISTRY_HTTP_TLS_KEY=/certs/$KEY_FILENAME -p 443:443 registry:2
