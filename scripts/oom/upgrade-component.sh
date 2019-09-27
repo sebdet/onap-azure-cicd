@@ -58,11 +58,11 @@ cd $OOM_DIR
 helm upgrade $HELM_RELEASE_NAME $COMPONENT_FOLDER -f $OVERRIDE_FILE
 
 i=0
-TOTAL_LINES_FOR_COMPONENT=`kubectl get pods -n onap | grep "-$COMPONENT_FOLDER" | wc -l`
+TOTAL_LINES_FOR_COMPONENT=`kubectl get pods -n onap | grep "\-$COMPONENT_FOLDER\-" | wc -l`
 FAILING_PODS=$TOTAL_LINES_FOR_COMPONENT
 while [ $i -lt 15 ]
 do
-   NB_LINES_RUNNING=`kubectl get pods -n onap |grep "-$COMPONENT_FOLDER" | grep 'Running' | wc -l`
+   NB_LINES_RUNNING=`kubectl get pods -n onap |grep "\-$COMPONENT_FOLDER\-" | grep 'Running' | wc -l`
    echo "Found ${NB_LINES_RUNNING}/${TOTAL_LINES_FOR_COMPONENT} Pods in Running state"
    FAILING_PODS="$(($TOTAL_LINES_FOR_COMPONENT-$NB_LINES_RUNNING))"
    if [ $FAILING_PODS -eq 0 ] 
@@ -76,9 +76,9 @@ done
 
 mkdir -p $OUTPUT_DIR
 
-kubectl get pods -n onap | grep "-$COMPONENT_FOLDER" > $OUTPUT_DIR/pod-states.log
+kubectl get pods -n onap | grep "\-$COMPONENT_FOLDER\-" > $OUTPUT_DIR/pod-states.log
 
-PODS=$(kubectl get pods -n onap |grep "-$COMPONENT_FOLDER" | cut -d' ' -f1)
+PODS=$(kubectl get pods -n onap |grep "\-$COMPONENT_FOLDER\-" | cut -d' ' -f1)
 for POD in ${PODS}
 do
    kubectl describe pod $POD -n onap > $OUTPUT_DIR/$POD-describe.log
