@@ -29,8 +29,16 @@ node {
                                        name: 'onap_project']]])
             checkout([$class: 'GitSCM', 
             branches: [[name: '*/master']], 
+            doGenerateSubmoduleConfigurations: false, 
             extensions: [[$class: 'RelativeTargetDirectory', 
-                          relativeTargetDir: '${OOM_FOLDER}']], 
+                          relativeTargetDir: '${OOM_FOLDER}'],
+                        [$class: 'SubmoduleOption',
+                                      disableSubmodules: false,
+                                      parentCredentials: true,
+                                      recursiveSubmodules: true,
+                                      reference: '',
+                                      trackingSubmodules: false]], 
+            submoduleCfg: [],
             userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
                           url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom/.git', 
                           name: 'onap_oom_project']]])
