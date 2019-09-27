@@ -1,0 +1,94 @@
+Name:           cc697w-tdpi-clamp-clamp-dash-kibana-58d786f4df-g87zf
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-30751440-0/169.1.0.6
+Start Time:     Tue, 24 Sep 2019 16:52:36 +0000
+Labels:         app=clamp-dash-kibana
+                pod-template-hash=58d786f4df
+                release=cc697w-tdpi-clamp
+Annotations:    <none>
+Status:         Pending
+IP:             10.244.3.114
+Controlled By:  ReplicaSet/cc697w-tdpi-clamp-clamp-dash-kibana-58d786f4df
+Init Containers:
+  clamp-dash-kibana-readiness:
+    Container ID:  docker://9b2777a6555052b19e4b22ac8910590391a4f462d213941dbee4366fdf13b816
+    Image:         oomk8s/readiness-check:2.0.0
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:7daa08b81954360a1111d03364febcb3dcfeb723bcc12ce3eb3ed3e53f2323ed
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/ready.py
+    Args:
+      --container-name
+      clamp-dash-es
+    State:          Running
+      Started:      Fri, 27 Sep 2019 13:05:52 +0000
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Fri, 27 Sep 2019 12:55:44 +0000
+      Finished:     Fri, 27 Sep 2019 13:05:49 +0000
+    Ready:          False
+    Restart Count:  405
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Containers:
+  clamp-dash-kibana:
+    Container ID:   
+    Image:          onapci.westus2.cloudapp.azure.com:443/new-build/clamp-dashboard-kibana:95897-2
+    Image ID:       
+    Port:           5601/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  2Gi
+    Requests:
+      cpu:        10m
+      memory:     750Mi
+    Liveness:     tcp-socket :5601 delay=360s timeout=1s period=10s #success=1 #failure=3
+    Readiness:    tcp-socket :5601 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /etc/localtime from localtime (ro)
+      /usr/share/kibana/config/keystore/ from cc697w-tdpi-clamp-clamp-dash-kibana-aaf-pem-certs (rw)
+      /usr/share/kibana/config/kibana.yml from cc697w-tdpi-clamp-clamp-dash-kibana (rw,path="kibana.yml")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Conditions:
+  Type              Status
+  Initialized       False 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  localtime:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/localtime
+    HostPathType:  
+  cc697w-tdpi-clamp-clamp-dash-kibana:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697w-tdpi-clamp-clamp-dash-kibana
+    Optional:  false
+  cc697w-tdpi-clamp-clamp-dash-kibana-aaf-pem-certs:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-clamp-clamp-dash-kibana-aaf-pem-keys
+    Optional:    false
+  default-token-9l7dw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9l7dw
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason   Age                      From                               Message
+  ----    ------   ----                     ----                               -------
+  Normal  Pulling  7m29s (x406 over 2d20h)  kubelet, aks-nodepool1-30751440-0  Pulling image "oomk8s/readiness-check:2.0.0"
+  Normal  Pulled   7m28s (x406 over 2d20h)  kubelet, aks-nodepool1-30751440-0  Successfully pulled image "oomk8s/readiness-check:2.0.0"
