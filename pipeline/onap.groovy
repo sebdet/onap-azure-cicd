@@ -29,13 +29,12 @@ node {
                                        name: 'onap_project']]])
             checkout([$class: 'GitSCM', 
             branches: [[name: '*/master']], 
+            doGenerateSubmoduleConfigurations: true,
             extensions: [[$class: 'RelativeTargetDirectory', 
                           relativeTargetDir: '${OOM_FOLDER}'],
                          [$class: 'SubmoduleOption',
-                                      disableSubmodules: false,
                                       parentCredentials: true,
                                       recursiveSubmodules: true,
-                                      
                                       trackingSubmodules: true]
   ], 
             
