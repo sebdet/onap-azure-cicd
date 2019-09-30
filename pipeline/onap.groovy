@@ -27,22 +27,10 @@ node {
                                        refspec: '${GERRIT_REFSPEC}', 
                                        url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/${GERRIT_PROJECT}', 
                                        name: 'onap_project']]])
-            checkout([$class: 'GitSCM', 
-            branches: [[name: '*/master']], 
-            doGenerateSubmoduleConfigurations: false, 
-            extensions: [[$class: 'RelativeTargetDirectory', 
-                          relativeTargetDir: '${OOM_FOLDER}'],
-                        [$class: 'SubmoduleOption',
-                                      disableSubmodules: false,
-                                      parentCredentials: true,
-                                      recursiveSubmodules: true,
-                                      reference: '',
-                                      trackingSubmodules: false]], 
-            submoduleCfg: [],
-            userRemoteConfigs: [[credentialsId: 'lf-key-onap-bot', 
-                          url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/oom.git', 
-                          name: 'onap_oom_project']]])
             
+      sshagent (credentials: ['github-key-cicd-project']) {
+               sh('git clone --recursive \"$GERRIT_SCHEME://OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/oom\" $OOM_FOLDER')
+         }    
    }
    stage('Purge and create docker registry') {
       echo "Creating Docker registry on ${params.REGISTRY_HOST}, certif: ${params.CERTIFICATE_FOLDER}, key: ${params.KEY_FILENAME}"
