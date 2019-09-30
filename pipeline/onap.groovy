@@ -48,7 +48,7 @@ node {
                 }
                 )
     }
-    stage ('Starting the battle') {
+    stage ('Start the battle') {
         parallel (
                 "Purge and create docker registry": {
                     echo "Creating Docker registry on ${params.REGISTRY_HOST}, certif: ${params.CERTIFICATE_FOLDER}, key: ${params.KEY_FILENAME}"
