@@ -53,7 +53,7 @@ node {
                 "Purge and create docker registry": {
                     echo "Creating Docker registry on ${params.REGISTRY_HOST}, certif: ${params.CERTIFICATE_FOLDER}, key: ${params.KEY_FILENAME}"
                     sh("bash -x onap-azure-cicd/scripts/docker/create-registry.sh -d $CERTIFICATE_FOLDER -c $CERTIFICATE_FILENAME -k $KEY_FILENAME")
-                }
+                },
                 "Build docker images": {
                     echo "Building Component ${params.GERRIT_PROJECT}"
                     def buildScript = load "onap-azure-cicd/pipeline/build/${params.GERRIT_PROJECT}/build-component.groovy"
