@@ -28,7 +28,7 @@ node {
                                        url: '${GERRIT_SCHEME}://OnapTesterBot@${GERRIT_HOST}:${GERRIT_PORT}/${GERRIT_PROJECT}', 
                                        name: 'onap_project']]])
             
-      sshagent (credentials: ['github-key-cicd-project']) {
+      sshagent (credentials: ['lf-key-onap-bot']) {
                sh('git clone --recursive \"$GERRIT_SCHEME://OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/oom\" $OOM_FOLDER')
          }    
    }
