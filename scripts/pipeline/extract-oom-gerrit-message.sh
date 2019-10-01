@@ -63,4 +63,4 @@ do
 	###echo $config | cut -d':' -f1
 	###echo $config | cut -d':' -f2
 done
-exit 1
+exit 0
