@@ -57,8 +57,10 @@ do
 	refspec=$(echo $config | cut -d':' -f2)
 	if [ "$repo" == "oom" ] 
 	then
-	    export OOM_REFSPEC=$refspec	
+	    echo $refspec
+	    exit 0
 	fi
 	###echo $config | cut -d':' -f1
 	###echo $config | cut -d':' -f2
 done
+exit 1
