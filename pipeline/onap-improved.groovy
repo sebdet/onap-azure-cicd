@@ -24,8 +24,8 @@ node {
     }
     stage('Extract info from gerrit message') {
         sh('echo $GERRIT_EVENT_COMMENT_TEXT > $WORKSPACE/gerrit-message.log')
-        OOM_REFSPEC = sh(returnStdout: true, script: "bash onap-azure-cicd/scripts/pipeline/extract-oom-gerrit-message.sh -f $WORKSPACE/gerrit-message.log -k /testme")
-        echo "OOM Patch: ${OOM_REFSPEC}"
+        env.OOM_REFSPEC = sh(returnStdout: true, script: "bash onap-azure-cicd/scripts/pipeline/extract-oom-gerrit-message.sh -f $WORKSPACE/gerrit-message.log -k /testme")
+        echo "OOM Patch: ${env.OOM_REFSPEC}"
     }
     stage('Prepare the battlefield') {
         echo "Cloning everything for ${params.GERRIT_PROJECT}"
