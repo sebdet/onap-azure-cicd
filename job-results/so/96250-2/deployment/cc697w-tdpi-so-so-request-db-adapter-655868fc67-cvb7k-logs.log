@@ -1,0 +1,21 @@
+2019-10-01 10:39:10,527 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+2019-10-01 10:39:10,679 - INFO - cc697w-tdpi-so-so-mariadb-config-job has not succeeded yet
+2019-10-01 10:39:15,684 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+2019-10-01 10:39:15,691 - INFO - cc697w-tdpi-so-so-mariadb-config-job has not succeeded yet
+2019-10-01 10:39:20,696 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+2019-10-01 10:39:20,703 - INFO - cc697w-tdpi-so-so-mariadb-config-job has not succeeded yet
+2019-10-01 10:39:25,706 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+2019-10-01 10:39:25,714 - INFO - cc697w-tdpi-so-so-mariadb-config-job has not succeeded yet
+2019-10-01 10:39:30,719 - INFO - Checking if cc697w-tdpi-so-so-mariadb-config-job  is complete
+Installing onap-ca.crt in /usr/local/share/ca-certificates
+WARNING: ca-certificates.crt does not contain exactly one certificate or CRL: skipping
+JVM Arguments:  -Djava.security.egd=file:/dev/./urandom -Dlogs_dir=./logs/reqdb/ -Dlogging.config=/app/logback-spring.xml  -Djavax.net.ssl.trustStore=/app/org.onap.so.trust.jks -Djavax.net.ssl.trustStorePassword=km,f$gzZ!6Hq[7TnyiMqbPuN -Dspring.config.additional-location=/app/config/override.yaml  
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.5.RELEASE)
+

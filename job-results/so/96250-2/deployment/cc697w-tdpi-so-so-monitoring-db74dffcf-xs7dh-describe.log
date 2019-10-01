@@ -1,0 +1,113 @@
+Name:           cc697w-tdpi-so-so-monitoring-db74dffcf-xs7dh
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-30751440-0/169.1.0.6
+Start Time:     Tue, 01 Oct 2019 10:39:05 +0000
+Labels:         app=so-monitoring
+                pod-template-hash=db74dffcf
+                release=cc697w-tdpi-so
+Annotations:    <none>
+Status:         Running
+IP:             10.244.3.126
+Controlled By:  ReplicaSet/cc697w-tdpi-so-so-monitoring-db74dffcf
+Init Containers:
+  so-chown:
+    Container ID:  docker://5663b7fc7be95d6dec87a78272adc6aaf992525f0f656b735e1a23f301b97c10
+    Image:         alpine:3.6
+    Image ID:      docker-pullable://alpine@sha256:66790a2b79e1ea3e1dabac43990c54aca5d1ddf268d9a5a0285e4167c8b24475
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+      chown -Rf 1000:1000 /app/logs
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 01 Oct 2019 10:39:11 +0000
+      Finished:     Tue, 01 Oct 2019 10:39:11 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /app/logs from logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Containers:
+  so-monitoring:
+    Container ID:   docker://6e176037a8a18dbe2fa917e7220cc9acc60e4c6c22c7027d1eab8faba3249ded
+    Image:          onapci.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2
+    Image ID:       docker-pullable://onapci.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring@sha256:aa700a99c55dbbaa1cd7313f38f3e29d3fd364d8301dfd6f5a14e4e1c12f17cc
+    Port:           9091/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 01 Oct 2019 10:39:22 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  4Gi
+    Requests:
+      cpu:      10m
+      memory:   1Gi
+    Liveness:   tcp-socket :9091 delay=40s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  tcp-socket :9091 delay=20s timeout=1s period=10s #success=1 #failure=3
+    Environment Variables from:
+      cc697w-tdpi-so-so-monitoring-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:          <set to the key 'mariadb.readwrite.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:          <set to the key 'mariadb.readwrite.password' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:    <set to the key 'mariadb.admin.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:    <set to the key 'mariadb.admin.password' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      TRUSTSTORE:           /app/org.onap.so.trust.jks
+      TRUSTSTORE_PASSWORD:  <set to the key 'trustStorePassword' in secret 'cc697w-tdpi-so-so-trust-pass-secret'>  Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /app/org.onap.so.trust.jks from so-trust-secret (ro,path="org.onap.so.trust.jks")
+      /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697w-tdpi-so-so-monitoring-app-configmap
+    Optional:  false
+  so-trust-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-trust-secret
+    Optional:    false
+  aaf-keyfile-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-keyfile-secret
+    Optional:    false
+  default-token-9l7dw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9l7dw
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age    From                               Message
+  ----    ------     ----   ----                               -------
+  Normal  Scheduled  5m32s  default-scheduler                  Successfully assigned onap/cc697w-tdpi-so-so-monitoring-db74dffcf-xs7dh to aks-nodepool1-30751440-0
+  Normal  Pulling    5m29s  kubelet, aks-nodepool1-30751440-0  Pulling image "alpine:3.6"
+  Normal  Pulled     5m27s  kubelet, aks-nodepool1-30751440-0  Successfully pulled image "alpine:3.6"
+  Normal  Created    5m26s  kubelet, aks-nodepool1-30751440-0  Created container so-chown
+  Normal  Started    5m25s  kubelet, aks-nodepool1-30751440-0  Started container so-chown
+  Normal  Pulling    5m24s  kubelet, aks-nodepool1-30751440-0  Pulling image "onapci.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"
+  Normal  Pulled     5m17s  kubelet, aks-nodepool1-30751440-0  Successfully pulled image "onapci.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"
+  Normal  Created    5m15s  kubelet, aks-nodepool1-30751440-0  Created container so-monitoring
+  Normal  Started    5m15s  kubelet, aks-nodepool1-30751440-0  Started container so-monitoring

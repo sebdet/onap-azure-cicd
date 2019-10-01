@@ -1,0 +1,92 @@
+Name:           cc697w-tdpi-so-so-sdnc-adapter-9bb974bc6-nldk7
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-30751440-1/169.1.0.9
+Start Time:     Tue, 01 Oct 2019 10:39:06 +0000
+Labels:         app=so-sdnc-adapter
+                pod-template-hash=9bb974bc6
+                release=cc697w-tdpi-so
+Annotations:    <none>
+Status:         Running
+IP:             10.244.1.46
+Controlled By:  ReplicaSet/cc697w-tdpi-so-so-sdnc-adapter-9bb974bc6
+Containers:
+  so-sdnc-adapter:
+    Container ID:   docker://0c80ba26fd3038f172c1be9fb5f80b3c585c2a226137dd2d2fc063a126f4b323
+    Image:          onapci.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2
+    Image ID:       docker-pullable://onapci.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter@sha256:4dc8dc5027fe2c42c3f4a5ba9890cbae7ad586b1db2fc58e1389e29551433bdb
+    Port:           8086/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Tue, 01 Oct 2019 10:43:09 +0000
+      Finished:     Tue, 01 Oct 2019 10:43:19 +0000
+    Ready:          False
+    Restart Count:  5
+    Limits:
+      cpu:     2
+      memory:  4Gi
+    Requests:
+      cpu:     500m
+      memory:  1Gi
+    Liveness:  http-get http://:8086/manage/health delay=600s timeout=10s period=60s #success=1 #failure=3
+    Environment Variables from:
+      cc697w-tdpi-so-so-sdnc-adapter-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:          <set to the key 'mariadb.readwrite.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:          <set to the key 'mariadb.readwrite.password' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:    <set to the key 'mariadb.admin.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:    <set to the key 'mariadb.admin.password' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      TRUSTSTORE:           /app/org.onap.so.trust.jks
+      TRUSTSTORE_PASSWORD:  <set to the key 'trustStorePassword' in secret 'cc697w-tdpi-so-so-trust-pass-secret'>  Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /app/org.onap.so.trust.jks from so-trust-secret (ro,path="org.onap.so.trust.jks")
+      /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697w-tdpi-so-so-sdnc-adapter-app-configmap
+    Optional:  false
+  so-trust-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-trust-secret
+    Optional:    false
+  aaf-keyfile-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-keyfile-secret
+    Optional:    false
+  default-token-9l7dw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9l7dw
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                    From                               Message
+  ----     ------     ----                   ----                               -------
+  Normal   Scheduled  5m32s                  default-scheduler                  Successfully assigned onap/cc697w-tdpi-so-so-sdnc-adapter-9bb974bc6-nldk7 to aks-nodepool1-30751440-1
+  Normal   Started    4m3s (x4 over 5m23s)   kubelet, aks-nodepool1-30751440-1  Started container so-sdnc-adapter
+  Normal   Pulling    3m11s (x5 over 5m30s)  kubelet, aks-nodepool1-30751440-1  Pulling image "onapci.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2"
+  Normal   Pulled     3m11s (x5 over 5m26s)  kubelet, aks-nodepool1-30751440-1  Successfully pulled image "onapci.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2"
+  Normal   Created    3m11s (x5 over 5m23s)  kubelet, aks-nodepool1-30751440-1  Created container so-sdnc-adapter
+  Warning  BackOff    27s (x18 over 4m57s)   kubelet, aks-nodepool1-30751440-1  Back-off restarting failed container

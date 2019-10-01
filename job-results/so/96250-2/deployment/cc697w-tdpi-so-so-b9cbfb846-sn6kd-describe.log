@@ -1,0 +1,119 @@
+Name:           cc697w-tdpi-so-so-b9cbfb846-sn6kd
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-30751440-4/169.1.0.10
+Start Time:     Tue, 01 Oct 2019 10:39:06 +0000
+Labels:         app=so
+                pod-template-hash=b9cbfb846
+                release=cc697w-tdpi-so
+Annotations:    <none>
+Status:         Running
+IP:             10.244.0.62
+Controlled By:  ReplicaSet/cc697w-tdpi-so-so-b9cbfb846
+Init Containers:
+  so-readiness:
+    Container ID:  docker://8f8e29264d59b335d6b4e0b40505d8bf20d4e1da0998f3c89620a45f2b1b1c94
+    Image:         oomk8s/readiness-check:2.0.2
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/job_complete.py
+    Args:
+      --job-name
+      cc697w-tdpi-so-so-mariadb-config-job
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 01 Oct 2019 10:39:11 +0000
+      Finished:     Tue, 01 Oct 2019 10:39:31 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Containers:
+  so:
+    Container ID:   docker://e562e18cdd0a1753d7c7e9a2e25ec3801702feccaf3160ca7038f999918a68d9
+    Image:          onapci.westus2.cloudapp.azure.com:443/new-build/so/api-handler-infra:96250-2
+    Image ID:       docker-pullable://onapci.westus2.cloudapp.azure.com:443/new-build/so/api-handler-infra@sha256:ac52e98f75fe6bda27f39a2aaab82d8263bfbc519487935cc9af563260da218c
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 01 Oct 2019 10:44:14 +0000
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Tue, 01 Oct 2019 10:42:24 +0000
+      Finished:     Tue, 01 Oct 2019 10:42:44 +0000
+    Ready:          True
+    Restart Count:  5
+    Limits:
+      cpu:     2
+      memory:  4Gi
+    Requests:
+      cpu:     500m
+      memory:  1Gi
+    Liveness:  http-get http://:8080/manage/health delay=600s timeout=10s period=60s #success=1 #failure=3
+    Environment Variables from:
+      cc697w-tdpi-so-so-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:          <set to the key 'mariadb.readwrite.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:          <set to the key 'mariadb.readwrite.password' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:    <set to the key 'mariadb.admin.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:    <set to the key 'mariadb.admin.password' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      TRUSTSTORE:           /app/org.onap.so.trust.jks
+      TRUSTSTORE_PASSWORD:  <set to the key 'trustStorePassword' in secret 'cc697w-tdpi-so-so-trust-pass-secret'>  Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /app/org.onap.so.trust.jks from so-trust-secret (ro,path="org.onap.so.trust.jks")
+      /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697w-tdpi-so-so-app-configmap
+    Optional:  false
+  so-trust-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-trust-secret
+    Optional:    false
+  aaf-keyfile-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-keyfile-secret
+    Optional:    false
+  default-token-9l7dw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9l7dw
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                    From                               Message
+  ----     ------     ----                   ----                               -------
+  Normal   Scheduled  5m30s                  default-scheduler                  Successfully assigned onap/cc697w-tdpi-so-so-b9cbfb846-sn6kd to aks-nodepool1-30751440-4
+  Normal   Pulling    5m27s                  kubelet, aks-nodepool1-30751440-4  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal   Pulled     5m26s                  kubelet, aks-nodepool1-30751440-4  Successfully pulled image "oomk8s/readiness-check:2.0.2"
+  Normal   Created    5m26s                  kubelet, aks-nodepool1-30751440-4  Created container so-readiness
+  Normal   Started    5m25s                  kubelet, aks-nodepool1-30751440-4  Started container so-readiness
+  Normal   Pulled     3m18s (x4 over 4m56s)  kubelet, aks-nodepool1-30751440-4  Successfully pulled image "onapci.westus2.cloudapp.azure.com:443/new-build/so/api-handler-infra:96250-2"
+  Normal   Created    3m17s (x4 over 4m55s)  kubelet, aks-nodepool1-30751440-4  Created container so
+  Normal   Started    3m17s (x4 over 4m55s)  kubelet, aks-nodepool1-30751440-4  Started container so
+  Warning  BackOff    2m44s (x5 over 4m13s)  kubelet, aks-nodepool1-30751440-4  Back-off restarting failed container
+  Normal   Pulling    23s (x6 over 5m3s)     kubelet, aks-nodepool1-30751440-4  Pulling image "onapci.westus2.cloudapp.azure.com:443/new-build/so/api-handler-infra:96250-2"

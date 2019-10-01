@@ -1,0 +1,119 @@
+Name:           cc697w-tdpi-so-so-vfc-adapter-678f4d686-wdmzm
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-30751440-0/169.1.0.6
+Start Time:     Tue, 01 Oct 2019 10:39:06 +0000
+Labels:         app=so-vfc-adapter
+                pod-template-hash=678f4d686
+                release=cc697w-tdpi-so
+Annotations:    <none>
+Status:         Running
+IP:             10.244.3.127
+Controlled By:  ReplicaSet/cc697w-tdpi-so-so-vfc-adapter-678f4d686
+Init Containers:
+  so-vfc-adapter-readiness:
+    Container ID:  docker://645de6c1db12facd55b44f41391fbe130b67a4a4caf4ecc57208f5f59448fe02
+    Image:         oomk8s/readiness-check:2.0.2
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/job_complete.py
+    Args:
+      --job-name
+      cc697w-tdpi-so-so-mariadb-config-job
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Tue, 01 Oct 2019 10:39:12 +0000
+      Finished:     Tue, 01 Oct 2019 10:39:28 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Containers:
+  so-vfc-adapter:
+    Container ID:   docker://6475161f78427d7ddae90c43958862c636a9428764bcfd4decb92bc05fb79dd5
+    Image:          onapci.westus2.cloudapp.azure.com:443/new-build/so/vfc-adapter:96250-2
+    Image ID:       docker-pullable://onapci.westus2.cloudapp.azure.com:443/new-build/so/vfc-adapter@sha256:c88604372e88f721659977036df7e26eca39ab4ea4393c2d68b2b6a3e6ac47b8
+    Port:           8084/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Tue, 01 Oct 2019 10:44:03 +0000
+      Finished:     Tue, 01 Oct 2019 10:44:17 +0000
+    Ready:          False
+    Restart Count:  5
+    Limits:
+      cpu:     2
+      memory:  4Gi
+    Requests:
+      cpu:     500m
+      memory:  1Gi
+    Liveness:  http-get http://:8084/manage/health delay=600s timeout=10s period=60s #success=1 #failure=3
+    Environment Variables from:
+      cc697w-tdpi-so-so-vfc-adapter-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:          <set to the key 'mariadb.readwrite.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:          <set to the key 'mariadb.readwrite.password' in secret 'cc697w-tdpi-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:    <set to the key 'mariadb.admin.rolename' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:    <set to the key 'mariadb.admin.password' in secret 'cc697w-tdpi-so-so-db-secrets'>      Optional: false
+      TRUSTSTORE:           /app/org.onap.so.trust.jks
+      TRUSTSTORE_PASSWORD:  <set to the key 'trustStorePassword' in secret 'cc697w-tdpi-so-so-trust-pass-secret'>  Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /app/org.onap.so.trust.jks from so-trust-secret (ro,path="org.onap.so.trust.jks")
+      /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9l7dw (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697w-tdpi-so-so-vfc-adapter-app-configmap
+    Optional:  false
+  so-trust-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-trust-secret
+    Optional:    false
+  aaf-keyfile-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697w-tdpi-so-so-keyfile-secret
+    Optional:    false
+  default-token-9l7dw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9l7dw
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                    From                               Message
+  ----     ------     ----                   ----                               -------
+  Normal   Scheduled  5m33s                  default-scheduler                  Successfully assigned onap/cc697w-tdpi-so-so-vfc-adapter-678f4d686-wdmzm to aks-nodepool1-30751440-0
+  Normal   Pulling    5m31s                  kubelet, aks-nodepool1-30751440-0  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal   Pulled     5m28s                  kubelet, aks-nodepool1-30751440-0  Successfully pulled image "oomk8s/readiness-check:2.0.2"
+  Normal   Created    5m27s                  kubelet, aks-nodepool1-30751440-0  Created container so-vfc-adapter-readiness
+  Normal   Started    5m27s                  kubelet, aks-nodepool1-30751440-0  Started container so-vfc-adapter-readiness
+  Normal   Pulling    3m21s (x4 over 5m10s)  kubelet, aks-nodepool1-30751440-0  Pulling image "onapci.westus2.cloudapp.azure.com:443/new-build/so/vfc-adapter:96250-2"
+  Normal   Pulled     3m21s (x4 over 5m4s)   kubelet, aks-nodepool1-30751440-0  Successfully pulled image "onapci.westus2.cloudapp.azure.com:443/new-build/so/vfc-adapter:96250-2"
+  Normal   Created    3m20s (x4 over 5m2s)   kubelet, aks-nodepool1-30751440-0  Created container so-vfc-adapter
+  Normal   Started    3m20s (x4 over 4m59s)  kubelet, aks-nodepool1-30751440-0  Started container so-vfc-adapter
+  Warning  BackOff    21s (x15 over 4m18s)   kubelet, aks-nodepool1-30751440-0  Back-off restarting failed container

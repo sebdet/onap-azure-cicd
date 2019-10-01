@@ -1,0 +1,6 @@
+2019-10-01 10:39:13,851 - INFO - Checking if mariadb-galera  is ready
+2019-10-01 10:39:14,969 - INFO - Statefulset cc697w-tdpi-mariadb-galera-mariadb-galera  is ready
+Cloning into '/tmp/gerrit'...
+Clone complete. Copying from /tmp/gerrit/volumes/mariadb/docker-entrypoint-initdb.d to /docker-entrypoint-initdb.d
+Done.
+Database already initialized!!!
