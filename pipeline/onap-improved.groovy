@@ -22,7 +22,7 @@ node {
                                 name: 'pipeline_project']
                         ]])
     }
-    stage('Decode message parameters') {
+    stage('Extract info from gerrit message') {
         sh('echo $GERRIT_EVENT_COMMENT_TEXT > $WORKSPACE/gerrit-message.log')
         OOM_REFSPEC = sh(returnStdout: true, script: "bash onap-azure-cicd/scripts/pipeline/extract-oom-gerrit-message.sh -f $WORKSPACE/gerrit-message.log -k /testme")
         echo "OOM Patch: ${OOM_REFSPEC}"
@@ -48,7 +48,9 @@ node {
                 },
                 "Cloning OOM": {
                     sshagent (credentials: ['lf-key-onap-bot']) {
+                        
                         sh('git clone --recursive \"$GERRIT_SCHEME://OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/oom\" $OOM_FOLDER')
+                        sh('git --git-dir=${WORKSPACE}/$OOM_FOLDER/.git --work-tree=${WORKSPACE}/$OOM_FOLDER fetch \"$GERRIT_SCHEME://OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/oom\" $OOM_REFSPEC && git --git-dir=${WORKSPACE}/$OOM_FOLDER/.git --work-tree=${WORKSPACE}/$OOM_FOLDER checkout FETCH_HEAD')
                     }
                 }
                 )
