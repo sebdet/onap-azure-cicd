@@ -8,29 +8,34 @@ node {
         deleteDir()
     }
     stage('Clone pipeline script') {
-         checkout([$class: 'GitSCM',
-                        branches: [[name: 'master']],
-                        doGenerateSubmoduleConfigurations: false,
-                        extensions: [
-                            [$class: 'RelativeTargetDirectory',
-                                relativeTargetDir: 'onap-azure-cicd']
-                        ],
-                        submoduleCfg: [],
-                        userRemoteConfigs: [
-                            [credentialsId: 'github-key-cicd-project',
-                                url: 'git@github.com:sebdet/onap-azure-cicd.git',
-                                name: 'pipeline_project']
-                        ]])
+        checkout([$class: 'GitSCM',
+            branches: [[name: 'master']],
+            doGenerateSubmoduleConfigurations: false,
+            extensions: [
+                [$class: 'RelativeTargetDirectory',
+                    relativeTargetDir: 'onap-azure-cicd']
+            ],
+            submoduleCfg: [],
+            userRemoteConfigs: [
+                [credentialsId: 'github-key-cicd-project',
+                    url: 'git@github.com:sebdet/onap-azure-cicd.git',
+                    name: 'pipeline_project']
+            ]])
     }
     stage('Extract info from gerrit message') {
         sh('echo $GERRIT_EVENT_COMMENT_TEXT > $WORKSPACE/gerrit-message.log')
         env.OOM_REFSPEC = sh(returnStdout: true, script: "bash onap-azure-cicd/scripts/pipeline/extract-oom-gerrit-message.sh -f $WORKSPACE/gerrit-message.log -k /testme")
         echo "OOM Patch: ${env.OOM_REFSPEC}"
+        if (env.OOM_REFSPEC) {
+            sshagent (credentials: ['lf-key-onap-bot']) {
+                sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"INFO: Using a specific review for OOM: $OOM_REFSPEC\"\' $GERRIT_PATCHSET_REVISION")
+            }
+        }
     }
-    stage('Prepare the battlefield') {
+    stage('Clone Component Code & OOM') {
         echo "Cloning everything for ${params.GERRIT_PROJECT}"
         parallel (
-                 "Cloning component code": {
+                "Cloning component code": {
                     checkout([$class: 'GitSCM',
                         branches: [[name: 'FETCH_HEAD']],
                         doGenerateSubmoduleConfigurations: false,
@@ -48,14 +53,14 @@ node {
                 },
                 "Cloning OOM": {
                     sshagent (credentials: ['lf-key-onap-bot']) {
-                        
+
                         sh('git clone --recursive \"$GERRIT_SCHEME://OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/oom\" $OOM_FOLDER')
                         sh('git --git-dir=${WORKSPACE}/$OOM_FOLDER/.git --work-tree=${WORKSPACE}/$OOM_FOLDER fetch \"$GERRIT_SCHEME://OnapTesterBot@$GERRIT_HOST:$GERRIT_PORT/oom\" $OOM_REFSPEC && git --git-dir=${WORKSPACE}/$OOM_FOLDER/.git --work-tree=${WORKSPACE}/$OOM_FOLDER checkout FETCH_HEAD')
                     }
                 }
                 )
     }
-    stage ('Start the battle') {
+    stage ('Build Component Code & OOM') {
         parallel (
                 "Purge and create docker registry": {
                     echo "Creating Docker registry on ${params.REGISTRY_HOST}, certif: ${params.CERTIFICATE_FOLDER}, key: ${params.KEY_FILENAME}"
