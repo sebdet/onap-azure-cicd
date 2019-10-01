@@ -25,7 +25,7 @@ node {
     stage('Decode message parameters') {
         sh('echo $GERRIT_EVENT_COMMENT_TEXT > $WORKSPACE/gerrit-message.log')
         sh('bash onap-azure-cicd/scripts/pipeline/decode-message-parameters.sh -f $WORKSPACE/gerrit-message.log -k /testme')
-        echo "OOM Patch: ${params.OOM_REFSPEC}"
+        echo "OOM Patch: ${env.OOM_REFSPEC}"
         sh(script: "env | grep OOM",returnStdout: true)
     }
     stage('Prepare the battlefield') {
