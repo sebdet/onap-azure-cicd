@@ -26,29 +26,27 @@
 helpFunction()
 {
    echo ""
-   echo "Usage: $0 -d /onap/kubernetes/oom -r dev-so -c so"
+   echo "Usage: $0 -d /onap/kubernetes/oom -r dev-so"
 
    echo -e "\t-d >> The OOM directory from where to upgrade the lab"
    echo -e "\t-r >> The component helm RELEASE name (dev-so, dev-clamp, ...)"
-   echo -e "\t-c >> The component folder name in OOM folder"
    exit 1 # Exit script after printing help
 }
 
-while getopts "d:r:c:" opt
+while getopts "d:r:" opt
 do
    case "$opt" in
       d ) OOM_DIR="$OPTARG" ;;
       r ) HELM_RELEASE_NAME="$OPTARG" ;;
-      c ) COMPONENT_FOLDER="$OPTARG" ;;
       ? ) helpFunction ;; # Print helpFunction in case parameter is non-existent
    esac
 done
 
-if [ -z "$OOM_DIR" ] || [ -z "$HELM_RELEASE_NAME" ] || [ -z "$COMPONENT_FOLDER" ]
+if [ -z "$OOM_DIR" ] || [ -z "$HELM_RELEASE_NAME" ]
 then
    echo "Some or all of the parameters are empty";
    helpFunction
 fi
 
 cd $OOM_DIR
-helm rollback $HELM_RELEASE_NAME-$COMPONENT_FOLDER 1
+helm rollback $HELM_RELEASE_NAME  1
