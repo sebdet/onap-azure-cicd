@@ -133,4 +133,8 @@ node {
             }
         }
     }
+    stage('Rollback the lab') {
+           echo "Rollbacking the lab"
+           sh(script: "bash -x ${WORKSPACE}/onap-azure-cicd/scripts/oom/rollback-component.sh -d ${WORKSPACE}/${OOM_FOLDER}/kubernetes -r ${HELM_RELEASE_NAME}-${GERRIT_PROJECT}")
+    }
 }
