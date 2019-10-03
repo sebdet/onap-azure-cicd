@@ -1,0 +1,11 @@
+cc697wonapci1lq3-so-so-79f48d45d6-9mskr                           0/1     Pending            0          10m
+cc697wonapci1lq3-so-so-bpmn-infra-5f6594874b-dw5q8                0/1     Init:0/1           0          10m
+cc697wonapci1lq3-so-so-catalog-db-adapter-85db4b7599-v5ttr        0/1     Init:0/1           0          10m
+cc697wonapci1lq3-so-so-mariadb-config-job-hdzzz                   0/1     Pending            0          10m
+cc697wonapci1lq3-so-so-monitoring-dbc4f7d74-9ztbz                 0/1     ImagePullBackOff   0          10m
+cc697wonapci1lq3-so-so-openstack-adapter-7d98b4c49c-mvd66         0/1     Init:0/1           0          10m
+cc697wonapci1lq3-so-so-request-db-adapter-6d58774575-8bb48        0/1     Init:0/1           0          10m
+cc697wonapci1lq3-so-so-sdc-controller-646ffb9c47-cp259            0/1     Init:0/1           0          10m
+cc697wonapci1lq3-so-so-sdnc-adapter-698c999c5c-htst5              0/1     Pending            0          10m
+cc697wonapci1lq3-so-so-vfc-adapter-555d87cdc4-tlj22               0/1     Pending            0          10m
+cc697wonapci1lq3-so-so-vnfm-adapter-9db5b966-2g7vx                0/1     Pending            0          10m

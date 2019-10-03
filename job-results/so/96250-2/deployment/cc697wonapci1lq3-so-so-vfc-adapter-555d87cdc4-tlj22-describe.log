@@ -1,0 +1,87 @@
+Name:           cc697wonapci1lq3-so-so-vfc-adapter-555d87cdc4-tlj22
+Namespace:      onap
+Priority:       0
+Node:           <none>
+Labels:         app=so-vfc-adapter
+                pod-template-hash=555d87cdc4
+                release=cc697wonapci1lq3-so
+Annotations:    <none>
+Status:         Pending
+IP:             
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-vfc-adapter-555d87cdc4
+Init Containers:
+  so-vfc-adapter-readiness:
+    Image:      oomk8s/readiness-check:2.0.2
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /root/job_complete.py
+    Args:
+      --job-name
+      cc697wonapci1lq3-so-so-mariadb-config-job
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  so-vfc-adapter:
+    Image:      onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/vfc-adapter:96250-2
+    Port:       8084/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     2
+      memory:  4Gi
+    Requests:
+      cpu:     500m
+      memory:  1Gi
+    Liveness:  http-get http://:8084/manage/health delay=600s timeout=10s period=60s #success=1 #failure=3
+    Environment Variables from:
+      cc697wonapci1lq3-so-so-vfc-adapter-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:          <set to the key 'mariadb.readwrite.rolename' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:          <set to the key 'mariadb.readwrite.password' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:    <set to the key 'mariadb.admin.rolename' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:    <set to the key 'mariadb.admin.password' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      TRUSTSTORE:           /app/org.onap.so.trust.jks
+      TRUSTSTORE_PASSWORD:  <set to the key 'trustStorePassword' in secret 'cc697wonapci1lq3-so-so-trust-pass-secret'>  Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /app/org.onap.so.trust.jks from so-trust-secret (ro,path="org.onap.so.trust.jks")
+      /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-so-so-vfc-adapter-app-configmap
+    Optional:  false
+  so-trust-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697wonapci1lq3-so-so-trust-secret
+    Optional:    false
+  aaf-keyfile-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697wonapci1lq3-so-so-keyfile-secret
+    Optional:    false
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason            Age                 From               Message
+  ----     ------            ----                ----               -------
+  Warning  FailedScheduling  23s (x12 over 10m)  default-scheduler  0/3 nodes are available: 3 Insufficient cpu.

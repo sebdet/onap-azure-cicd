@@ -1,0 +1,115 @@
+Name:           cc697wonapci1lq3-so-so-monitoring-dbc4f7d74-9ztbz
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-12261238-2/169.1.0.6
+Start Time:     Thu, 03 Oct 2019 16:36:00 +0000
+Labels:         app=so-monitoring
+                pod-template-hash=dbc4f7d74
+                release=cc697wonapci1lq3-so
+Annotations:    <none>
+Status:         Pending
+IP:             10.244.0.68
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-monitoring-dbc4f7d74
+Init Containers:
+  so-chown:
+    Container ID:  docker://5b02a1d27734527c5b6efb92c9831d0e7c62aed570ef02980cf66181e1f1ccc2
+    Image:         alpine:3.6
+    Image ID:      docker-pullable://alpine@sha256:66790a2b79e1ea3e1dabac43990c54aca5d1ddf268d9a5a0285e4167c8b24475
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+      chown -Rf 1000:1000 /app/logs
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Thu, 03 Oct 2019 16:36:07 +0000
+      Finished:     Thu, 03 Oct 2019 16:36:07 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /app/logs from logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  so-monitoring:
+    Container ID:   
+    Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2
+    Image ID:       
+    Port:           9091/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  4Gi
+    Requests:
+      cpu:      10m
+      memory:   1Gi
+    Liveness:   tcp-socket :9091 delay=40s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  tcp-socket :9091 delay=20s timeout=1s period=10s #success=1 #failure=3
+    Environment Variables from:
+      cc697wonapci1lq3-so-so-monitoring-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:          <set to the key 'mariadb.readwrite.rolename' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:          <set to the key 'mariadb.readwrite.password' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:    <set to the key 'mariadb.admin.rolename' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:    <set to the key 'mariadb.admin.password' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      TRUSTSTORE:           /app/org.onap.so.trust.jks
+      TRUSTSTORE_PASSWORD:  <set to the key 'trustStorePassword' in secret 'cc697wonapci1lq3-so-so-trust-pass-secret'>  Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /app/org.onap.so.trust.jks from so-trust-secret (ro,path="org.onap.so.trust.jks")
+      /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-so-so-monitoring-app-configmap
+    Optional:  false
+  so-trust-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697wonapci1lq3-so-so-trust-secret
+    Optional:    false
+  aaf-keyfile-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697wonapci1lq3-so-so-keyfile-secret
+    Optional:    false
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                    From                               Message
+  ----     ------     ----                   ----                               -------
+  Normal   Scheduled  10m                    default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-so-so-monitoring-dbc4f7d74-9ztbz to aks-nodepool1-12261238-2
+  Normal   Pulling    10m                    kubelet, aks-nodepool1-12261238-2  Pulling image "alpine:3.6"
+  Normal   Pulled     10m                    kubelet, aks-nodepool1-12261238-2  Successfully pulled image "alpine:3.6"
+  Normal   Created    10m                    kubelet, aks-nodepool1-12261238-2  Created container so-chown
+  Normal   Started    10m                    kubelet, aks-nodepool1-12261238-2  Started container so-chown
+  Warning  Failed     8m39s (x3 over 9m47s)  kubelet, aks-nodepool1-12261238-2  Failed to pull image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2": rpc error: code = Unknown desc = Error response from daemon: Get https://onapci-jenkins.westus2.cloudapp.azure.com:443/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+  Normal   Pulling    7m49s (x4 over 10m)    kubelet, aks-nodepool1-12261238-2  Pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"
+  Warning  Failed     7m34s (x4 over 9m47s)  kubelet, aks-nodepool1-12261238-2  Error: ErrImagePull
+  Warning  Failed     5m1s (x15 over 9m46s)  kubelet, aks-nodepool1-12261238-2  Error: ImagePullBackOff
+  Normal   BackOff    2s (x36 over 9m46s)    kubelet, aks-nodepool1-12261238-2  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"

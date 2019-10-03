@@ -1,0 +1,107 @@
+Name:           cc697wonapci1lq3-so-so-sdc-controller-646ffb9c47-cp259
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-12261238-0/169.1.0.4
+Start Time:     Thu, 03 Oct 2019 16:36:05 +0000
+Labels:         app=so-sdc-controller
+                pod-template-hash=646ffb9c47
+                release=cc697wonapci1lq3-so
+Annotations:    <none>
+Status:         Pending
+IP:             10.244.2.88
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-sdc-controller-646ffb9c47
+Init Containers:
+  so-sdc-controller-readiness:
+    Container ID:  docker://4ff9bdbaedbfef677585f66a338c67e5fc2f81b3454ca04bf22bcb8b0cebb0cb
+    Image:         oomk8s/readiness-check:2.0.2
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/job_complete.py
+    Args:
+      --job-name
+      cc697wonapci1lq3-so-so-mariadb-config-job
+    State:          Running
+      Started:      Thu, 03 Oct 2019 16:36:11 +0000
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  so-sdc-controller:
+    Container ID:   
+    Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdc-controller:96250-2
+    Image ID:       
+    Port:           8085/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     2
+      memory:  4Gi
+    Requests:
+      cpu:     500m
+      memory:  1Gi
+    Liveness:  http-get http://:8085/manage/health delay=600s timeout=10s period=60s #success=1 #failure=3
+    Environment Variables from:
+      cc697wonapci1lq3-so-so-sdc-controller-configmap  ConfigMap  Optional: false
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_USERNAME:          <set to the key 'mariadb.readwrite.rolename' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      DB_PASSWORD:          <set to the key 'mariadb.readwrite.password' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      DB_ADMIN_USERNAME:    <set to the key 'mariadb.admin.rolename' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      DB_ADMIN_PASSWORD:    <set to the key 'mariadb.admin.password' in secret 'cc697wonapci1lq3-so-so-db-secrets'>      Optional: false
+      TRUSTSTORE:           /app/org.onap.so.trust.jks
+      TRUSTSTORE_PASSWORD:  <set to the key 'trustStorePassword' in secret 'cc697wonapci1lq3-so-so-trust-pass-secret'>  Optional: false
+    Mounts:
+      /app/config from config (ro)
+      /app/logs from logs (rw)
+      /app/org.onap.so.trust.jks from so-trust-secret (ro,path="org.onap.so.trust.jks")
+      /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type              Status
+  Initialized       False 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-so-so-sdc-controller-app-configmap
+    Optional:  false
+  so-trust-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697wonapci1lq3-so-so-trust-secret
+    Optional:    false
+  aaf-keyfile-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697wonapci1lq3-so-so-keyfile-secret
+    Optional:    false
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age    From                               Message
+  ----    ------     ----   ----                               -------
+  Normal  Scheduled  10m    default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-so-so-sdc-controller-646ffb9c47-cp259 to aks-nodepool1-12261238-0
+  Normal  Pulling    10m    kubelet, aks-nodepool1-12261238-0  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulled     10m    kubelet, aks-nodepool1-12261238-0  Successfully pulled image "oomk8s/readiness-check:2.0.2"
+  Normal  Created    10m    kubelet, aks-nodepool1-12261238-0  Created container so-sdc-controller-readiness
+  Normal  Started    9m59s  kubelet, aks-nodepool1-12261238-0  Started container so-sdc-controller-readiness
