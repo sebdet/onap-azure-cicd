@@ -13,7 +13,7 @@ IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-bpmn-infra-5f6594874b
 Init Containers:
   so-bpmn-infra-readiness:
-    Container ID:  docker://32a66ceda16f9812b4890d6aaf49d6fb91ed597d5f6a5604bda664f28433d1b5
+    Container ID:  docker://d55598aaa347307b33bd7797777965e9b1c86b06b4b6df9ee771c8eea802e687
     Image:         oomk8s/readiness-check:2.0.2
     Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
     Port:          <none>
@@ -24,9 +24,14 @@ Init Containers:
       --job-name
       cc697wonapci1lq3-so-so-mariadb-config-job
     State:          Running
-      Started:      Thu, 03 Oct 2019 16:36:08 +0000
+      Started:      Fri, 04 Oct 2019 13:02:35 +0000
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Fri, 04 Oct 2019 12:52:27 +0000
+      Finished:     Fri, 04 Oct 2019 13:02:30 +0000
     Ready:          False
-    Restart Count:  0
+    Restart Count:  121
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
@@ -98,10 +103,7 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type    Reason     Age   From                               Message
-  ----    ------     ----  ----                               -------
-  Normal  Scheduled  10m   default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-so-so-bpmn-infra-5f6594874b-dw5q8 to aks-nodepool1-12261238-1
-  Normal  Pulling    10m   kubelet, aks-nodepool1-12261238-1  Pulling image "oomk8s/readiness-check:2.0.2"
-  Normal  Pulled     10m   kubelet, aks-nodepool1-12261238-1  Successfully pulled image "oomk8s/readiness-check:2.0.2"
-  Normal  Created    10m   kubelet, aks-nodepool1-12261238-1  Created container so-bpmn-infra-readiness
-  Normal  Started    10m   kubelet, aks-nodepool1-12261238-1  Started container so-bpmn-infra-readiness
+  Type    Reason   Age                   From                               Message
+  ----    ------   ----                  ----                               -------
+  Normal  Pulling  6m9s (x122 over 20h)  kubelet, aks-nodepool1-12261238-1  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulled   6m8s (x122 over 20h)  kubelet, aks-nodepool1-12261238-1  Successfully pulled image "oomk8s/readiness-check:2.0.2"

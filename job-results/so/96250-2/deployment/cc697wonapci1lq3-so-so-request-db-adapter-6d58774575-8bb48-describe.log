@@ -13,7 +13,7 @@ IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-request-db-adapter-6d58774575
 Init Containers:
   so-request-db-adapter-readiness:
-    Container ID:  docker://2d7cbf126cc7d333a08ccff794a59fdc1866b5211af7386100e833924ece3366
+    Container ID:  docker://5423679a10c868dff72a9617f19ae6d59247de527c5c3d320515373785c0acf2
     Image:         oomk8s/readiness-check:2.0.2
     Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
     Port:          <none>
@@ -24,9 +24,14 @@ Init Containers:
       --job-name
       cc697wonapci1lq3-so-so-mariadb-config-job
     State:          Running
-      Started:      Thu, 03 Oct 2019 16:36:11 +0000
+      Started:      Fri, 04 Oct 2019 13:01:47 +0000
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Fri, 04 Oct 2019 12:51:40 +0000
+      Finished:     Fri, 04 Oct 2019 13:01:43 +0000
     Ready:          False
-    Restart Count:  0
+    Restart Count:  121
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
@@ -98,10 +103,8 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type    Reason     Age    From                               Message
-  ----    ------     ----   ----                               -------
-  Normal  Scheduled  10m    default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-so-so-request-db-adapter-6d58774575-8bb48 to aks-nodepool1-12261238-0
-  Normal  Pulling    10m    kubelet, aks-nodepool1-12261238-0  Pulling image "oomk8s/readiness-check:2.0.2"
-  Normal  Pulled     10m    kubelet, aks-nodepool1-12261238-0  Successfully pulled image "oomk8s/readiness-check:2.0.2"
-  Normal  Created    10m    kubelet, aks-nodepool1-12261238-0  Created container so-request-db-adapter-readiness
-  Normal  Started    9m59s  kubelet, aks-nodepool1-12261238-0  Started container so-request-db-adapter-readiness
+  Type    Reason   Age                    From                               Message
+  ----    ------   ----                   ----                               -------
+  Normal  Created  57m (x117 over 20h)    kubelet, aks-nodepool1-12261238-0  Created container so-request-db-adapter-readiness
+  Normal  Pulling  6m57s (x122 over 20h)  kubelet, aks-nodepool1-12261238-0  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulled   6m56s (x122 over 20h)  kubelet, aks-nodepool1-12261238-0  Successfully pulled image "oomk8s/readiness-check:2.0.2"
