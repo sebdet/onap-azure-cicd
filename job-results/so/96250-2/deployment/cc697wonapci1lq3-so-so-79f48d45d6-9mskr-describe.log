@@ -1,34 +1,52 @@
 Name:           cc697wonapci1lq3-so-so-79f48d45d6-9mskr
 Namespace:      onap
 Priority:       0
-Node:           <none>
+Node:           aks-nodepool1-12261238-3/169.1.0.7
+Start Time:     Fri, 04 Oct 2019 14:45:01 +0000
 Labels:         app=so
                 pod-template-hash=79f48d45d6
                 release=cc697wonapci1lq3-so
 Annotations:    <none>
 Status:         Pending
-IP:             
+IP:             10.244.3.5
 IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-79f48d45d6
 Init Containers:
   so-readiness:
-    Image:      oomk8s/readiness-check:2.0.2
-    Port:       <none>
-    Host Port:  <none>
+    Container ID:  docker://ff22c02fc616bea5233d9f8c53d1a281d9d0d9d1b55fab663abcf96cca7e62fc
+    Image:         oomk8s/readiness-check:2.0.2
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
+    Port:          <none>
+    Host Port:     <none>
     Command:
       /root/job_complete.py
     Args:
       --job-name
       cc697wonapci1lq3-so-so-mariadb-config-job
+    State:          Running
+      Started:      Fri, 04 Oct 2019 15:16:18 +0000
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Fri, 04 Oct 2019 15:06:14 +0000
+      Finished:     Fri, 04 Oct 2019 15:16:16 +0000
+    Ready:          False
+    Restart Count:  3
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
 Containers:
   so:
-    Image:      onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/api-handler-infra:96250-2
-    Port:       8080/TCP
-    Host Port:  0/TCP
+    Container ID:   
+    Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/api-handler-infra:96250-2
+    Image ID:       
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
     Limits:
       cpu:     2
       memory:  4Gi
@@ -54,8 +72,11 @@ Containers:
       /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
 Conditions:
-  Type           Status
-  PodScheduled   False 
+  Type              Status
+  Initialized       False 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
 Volumes:
   logs:
     Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
@@ -82,6 +103,10 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type     Reason            Age                    From               Message
-  ----     ------            ----                   ----               -------
-  Warning  FailedScheduling  2m22s (x827 over 20h)  default-scheduler  0/3 nodes are available: 3 Insufficient cpu.
+  Type     Reason            Age                  From                               Message
+  ----     ------            ----                 ----                               -------
+  Warning  FailedScheduling  42m (x891 over 22h)  default-scheduler                  0/3 nodes are available: 3 Insufficient cpu.
+  Normal   Pulling           8m26s (x4 over 39m)  kubelet, aks-nodepool1-12261238-3  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal   Pulled            8m25s (x4 over 38m)  kubelet, aks-nodepool1-12261238-3  Successfully pulled image "oomk8s/readiness-check:2.0.2"
+  Normal   Created           8m25s (x4 over 38m)  kubelet, aks-nodepool1-12261238-3  Created container so-readiness
+  Normal   Started           8m25s (x4 over 38m)  kubelet, aks-nodepool1-12261238-3  Started container so-readiness

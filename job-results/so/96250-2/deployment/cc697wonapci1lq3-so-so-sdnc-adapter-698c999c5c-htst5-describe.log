@@ -1,20 +1,27 @@
 Name:           cc697wonapci1lq3-so-so-sdnc-adapter-698c999c5c-htst5
 Namespace:      onap
 Priority:       0
-Node:           <none>
+Node:           aks-nodepool1-12261238-3/169.1.0.7
+Start Time:     Fri, 04 Oct 2019 14:45:03 +0000
 Labels:         app=so-sdnc-adapter
                 pod-template-hash=698c999c5c
                 release=cc697wonapci1lq3-so
 Annotations:    <none>
 Status:         Pending
-IP:             
+IP:             10.244.3.3
 IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-sdnc-adapter-698c999c5c
 Containers:
   so-sdnc-adapter:
-    Image:      onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2
-    Port:       8086/TCP
-    Host Port:  0/TCP
+    Container ID:   
+    Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2
+    Image ID:       
+    Port:           8086/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
     Limits:
       cpu:     2
       memory:  4Gi
@@ -40,8 +47,11 @@ Containers:
       /app/so.keyfile from aaf-keyfile-secret (ro,path="so.keyfile")
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
 Conditions:
-  Type           Status
-  PodScheduled   False 
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
 Volumes:
   logs:
     Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
@@ -68,6 +78,11 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type     Reason            Age                   From               Message
-  ----     ------            ----                  ----               -------
-  Warning  FailedScheduling  115s (x828 over 20h)  default-scheduler  0/3 nodes are available: 3 Insufficient cpu.
+  Type     Reason            Age                    From                               Message
+  ----     ------            ----                   ----                               -------
+  Warning  FailedScheduling  43m (x892 over 22h)    default-scheduler                  0/3 nodes are available: 3 Insufficient cpu.
+  Normal   Pulling           36m (x4 over 39m)      kubelet, aks-nodepool1-12261238-3  Pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2"
+  Warning  Failed            36m (x4 over 38m)      kubelet, aks-nodepool1-12261238-3  Failed to pull image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2": rpc error: code = Unknown desc = Error response from daemon: Get https://onapci-jenkins.westus2.cloudapp.azure.com:443/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+  Warning  Failed            36m (x4 over 38m)      kubelet, aks-nodepool1-12261238-3  Error: ErrImagePull
+  Warning  Failed            9m28s (x115 over 38m)  kubelet, aks-nodepool1-12261238-3  Error: ImagePullBackOff
+  Normal   BackOff           4m24s (x137 over 38m)  kubelet, aks-nodepool1-12261238-3  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2"

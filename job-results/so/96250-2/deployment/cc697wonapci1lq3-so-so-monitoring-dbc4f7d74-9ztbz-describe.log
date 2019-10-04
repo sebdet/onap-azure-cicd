@@ -103,6 +103,6 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:
   Type     Reason   Age                     From                               Message
   ----     ------   ----                    ----                               -------
-  Warning  Failed   22m (x230 over 20h)     kubelet, aks-nodepool1-12261238-2  Failed to pull image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2": rpc error: code = Unknown desc = Error response from daemon: Get https://onapci-jenkins.westus2.cloudapp.azure.com:443/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
-  Normal   BackOff  17m (x5128 over 20h)    kubelet, aks-nodepool1-12261238-2  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"
-  Warning  Failed   2m36s (x5189 over 20h)  kubelet, aks-nodepool1-12261238-2  Error: ImagePullBackOff
+  Warning  Failed   13m (x5711 over 22h)    kubelet, aks-nodepool1-12261238-2  Error: ImagePullBackOff
+  Normal   Pulling  8m30s (x258 over 22h)   kubelet, aks-nodepool1-12261238-2  Pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"
+  Normal   BackOff  3m29s (x5754 over 22h)  kubelet, aks-nodepool1-12261238-2  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"

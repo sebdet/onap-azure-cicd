@@ -64,4 +64,5 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:
   Type     Reason            Age                   From               Message
   ----     ------            ----                  ----               -------
-  Warning  FailedScheduling  115s (x826 over 20h)  default-scheduler  0/3 nodes are available: 3 Insufficient cpu.
+  Warning  FailedScheduling  43m (x890 over 22h)   default-scheduler  0/3 nodes are available: 3 Insufficient cpu.
+  Warning  FailedScheduling  2m28s (x27 over 39m)  default-scheduler  0/4 nodes are available: 4 Insufficient cpu.

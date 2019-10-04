@@ -13,7 +13,7 @@ IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-catalog-db-adapter-85db4b7599
 Init Containers:
   so-catalog-db-adapter-readiness:
-    Container ID:  docker://07a64304d10dd392077d89c0bc897e02c19bdcefefa5b1cfa69b86803120502a
+    Container ID:  docker://c7a91a65d86b964e3800314ca796df6b7faea7f8559ca02cb13ddad1c373c015
     Image:         oomk8s/readiness-check:2.0.2
     Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
     Port:          <none>
@@ -24,14 +24,14 @@ Init Containers:
       --job-name
       cc697wonapci1lq3-so-so-mariadb-config-job
     State:          Running
-      Started:      Fri, 04 Oct 2019 13:02:33 +0000
+      Started:      Fri, 04 Oct 2019 15:24:22 +0000
     Last State:     Terminated
       Reason:       Error
       Exit Code:    1
-      Started:      Fri, 04 Oct 2019 12:52:25 +0000
-      Finished:     Fri, 04 Oct 2019 13:02:28 +0000
+      Started:      Fri, 04 Oct 2019 15:14:16 +0000
+      Finished:     Fri, 04 Oct 2019 15:24:18 +0000
     Ready:          False
-    Restart Count:  121
+    Restart Count:  135
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
@@ -103,7 +103,7 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type    Reason   Age                    From                               Message
-  ----    ------   ----                   ----                               -------
-  Normal  Pulling  6m10s (x122 over 20h)  kubelet, aks-nodepool1-12261238-1  Pulling image "oomk8s/readiness-check:2.0.2"
-  Normal  Pulled   6m10s (x122 over 20h)  kubelet, aks-nodepool1-12261238-1  Successfully pulled image "oomk8s/readiness-check:2.0.2"
+  Type    Reason   Age                  From                               Message
+  ----    ------   ----                 ----                               -------
+  Normal  Pulling  22s (x136 over 22h)  kubelet, aks-nodepool1-12261238-1  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulled   22s (x136 over 22h)  kubelet, aks-nodepool1-12261238-1  Successfully pulled image "oomk8s/readiness-check:2.0.2"
