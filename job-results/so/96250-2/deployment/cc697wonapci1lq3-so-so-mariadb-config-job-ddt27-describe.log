@@ -1,0 +1,88 @@
+Name:           cc697wonapci1lq3-so-so-mariadb-config-job-ddt27
+Namespace:      onap
+Priority:       0
+Node:           <none>
+Labels:         app=so-mariadb-job
+                controller-uid=efc60792-e879-11e9-88e1-9e3de0ad33e3
+                job-name=cc697wonapci1lq3-so-so-mariadb-config-job
+                release=cc697wonapci1lq3-so
+Annotations:    <none>
+Status:         Pending
+IP:             
+IPs:            <none>
+Controlled By:  Job/cc697wonapci1lq3-so-so-mariadb-config-job
+Init Containers:
+  so-mariadb-readiness:
+    Image:      oomk8s/readiness-check:2.0.2
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /root/ready.py
+    Args:
+      --container-name
+      mariadb-galera
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+  so-mariadb-inject-testlab-project:
+    Image:      registry.hub.docker.com/oomk8s/ubuntu-init:2.0.0
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/bash
+      -c
+      git clone -b master --single-branch http://gerrit.onap.org/r/so/docker-config.git /tmp/gerrit; echo "Clone complete. Copying from /tmp/gerrit/volumes/mariadb/docker-entrypoint-initdb.d to /docker-entrypoint-initdb.d"; cp -rf /tmp/gerrit/volumes/mariadb/docker-entrypoint-initdb.d/* /docker-entrypoint-initdb.d; chmod -R 755 /docker-entrypoint-initdb.d; echo "Done.";
+      
+    Environment:  <none>
+    Mounts:
+      /docker-entrypoint-initdb.d from docker-entrypoint-initdb-d (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  so-mariadb:
+    Image:      nexus3.onap.org:10001/mariadb:10.1.38
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /bin/bash
+      -c
+      mysql() { /usr/bin/mysql  -h ${DB_HOST} -P ${DB_PORT} "$@"; }; export -f mysql; mysql --user=root --password=${MYSQL_ROOT_PASSWORD} requestdb -e exit > /dev/null 2>&1  && echo "Database already initialized!!!" && exit 0 ; for f in /docker-entrypoint-initdb.d/*; do case "$f" in  *.sh) echo "$0: running $f"; . "$f" ;;  *.sql) echo "$0: running $f"; "${mysql[@]}" < "$f"; echo ;; *.sql.gz) echo "$0: running $f"; gunzip -c "$f" | "${mysql[@]}"; echo ;;  *) echo "$0: ignoring $f" ;;  esac; echo; done;
+      
+    Limits:
+      cpu:     2
+      memory:  4Gi
+    Requests:
+      cpu:     1
+      memory:  2Gi
+    Environment:
+      DB_HOST:              <set to the key 'mariadb.readwrite.host' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      DB_PORT:              <set to the key 'mariadb.readwrite.port' in secret 'cc697wonapci1lq3-so-so-db-secrets'>  Optional: false
+      MYSQL_ROOT_PASSWORD:  <set to the key 'db-root-password' in secret 'cc697wonapci1lq3-so-so-mariadb'>           Optional: false
+    Mounts:
+      /docker-entrypoint-initdb.d from docker-entrypoint-initdb-d (rw)
+      /etc/localtime from localtime (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False 
+Volumes:
+  localtime:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/localtime
+    HostPathType:  
+  docker-entrypoint-initdb-d:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason            Age               From               Message
+  ----     ------            ----              ----               -------
+  Warning  FailedScheduling  5s (x8 over 10m)  default-scheduler  0/4 nodes are available: 4 Insufficient cpu.

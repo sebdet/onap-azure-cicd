@@ -13,7 +13,7 @@ IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-79f48d45d6
 Init Containers:
   so-readiness:
-    Container ID:  docker://ff22c02fc616bea5233d9f8c53d1a281d9d0d9d1b55fab663abcf96cca7e62fc
+    Container ID:  docker://2eb0f767e66842cbb8398d71b0c7609b831cb42730414ebb2d3f9d6fefe7ea4c
     Image:         oomk8s/readiness-check:2.0.2
     Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
     Port:          <none>
@@ -24,14 +24,14 @@ Init Containers:
       --job-name
       cc697wonapci1lq3-so-so-mariadb-config-job
     State:          Running
-      Started:      Fri, 04 Oct 2019 15:16:18 +0000
+      Started:      Sun, 06 Oct 2019 20:50:33 +0000
     Last State:     Terminated
       Reason:       Error
       Exit Code:    1
-      Started:      Fri, 04 Oct 2019 15:06:14 +0000
-      Finished:     Fri, 04 Oct 2019 15:16:16 +0000
+      Started:      Sun, 06 Oct 2019 20:40:29 +0000
+      Finished:     Sun, 06 Oct 2019 20:50:31 +0000
     Ready:          False
-    Restart Count:  3
+    Restart Count:  322
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
@@ -103,10 +103,8 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type     Reason            Age                  From                               Message
-  ----     ------            ----                 ----                               -------
-  Warning  FailedScheduling  42m (x891 over 22h)  default-scheduler                  0/3 nodes are available: 3 Insufficient cpu.
-  Normal   Pulling           8m26s (x4 over 39m)  kubelet, aks-nodepool1-12261238-3  Pulling image "oomk8s/readiness-check:2.0.2"
-  Normal   Pulled            8m25s (x4 over 38m)  kubelet, aks-nodepool1-12261238-3  Successfully pulled image "oomk8s/readiness-check:2.0.2"
-  Normal   Created           8m25s (x4 over 38m)  kubelet, aks-nodepool1-12261238-3  Created container so-readiness
-  Normal   Started           8m25s (x4 over 38m)  kubelet, aks-nodepool1-12261238-3  Started container so-readiness
+  Type    Reason   Age                     From                               Message
+  ----    ------   ----                    ----                               -------
+  Normal  Created  53m (x318 over 2d6h)    kubelet, aks-nodepool1-12261238-3  Created container so-readiness
+  Normal  Pulling  2m55s (x323 over 2d6h)  kubelet, aks-nodepool1-12261238-3  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulled   2m54s (x323 over 2d6h)  kubelet, aks-nodepool1-12261238-3  Successfully pulled image "oomk8s/readiness-check:2.0.2"

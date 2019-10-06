@@ -13,7 +13,7 @@ IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-vfc-adapter-555d87cdc4
 Init Containers:
   so-vfc-adapter-readiness:
-    Container ID:  docker://4296e158743d66043d983dc4753caa4f2e8bc089f576fdaf831c529b67b22282
+    Container ID:  docker://2fbaad76d314d63c67bf5504067456b94b39635df66394a3a92515398b4a63cd
     Image:         oomk8s/readiness-check:2.0.2
     Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
     Port:          <none>
@@ -24,14 +24,14 @@ Init Containers:
       --job-name
       cc697wonapci1lq3-so-so-mariadb-config-job
     State:          Running
-      Started:      Fri, 04 Oct 2019 15:15:56 +0000
+      Started:      Sun, 06 Oct 2019 20:50:29 +0000
     Last State:     Terminated
       Reason:       Error
       Exit Code:    1
-      Started:      Fri, 04 Oct 2019 15:05:52 +0000
-      Finished:     Fri, 04 Oct 2019 15:15:54 +0000
+      Started:      Sun, 06 Oct 2019 20:40:24 +0000
+      Finished:     Sun, 06 Oct 2019 20:50:26 +0000
     Ready:          False
-    Restart Count:  3
+    Restart Count:  322
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
@@ -103,10 +103,8 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type     Reason            Age                  From                               Message
-  ----     ------            ----                 ----                               -------
-  Warning  FailedScheduling  42m (x890 over 22h)  default-scheduler                  0/3 nodes are available: 3 Insufficient cpu.
-  Normal   Pulling           8m51s (x4 over 39m)  kubelet, aks-nodepool1-12261238-3  Pulling image "oomk8s/readiness-check:2.0.2"
-  Normal   Pulled            8m50s (x4 over 39m)  kubelet, aks-nodepool1-12261238-3  Successfully pulled image "oomk8s/readiness-check:2.0.2"
-  Normal   Created           8m50s (x4 over 39m)  kubelet, aks-nodepool1-12261238-3  Created container so-vfc-adapter-readiness
-  Normal   Started           8m50s (x4 over 39m)  kubelet, aks-nodepool1-12261238-3  Started container so-vfc-adapter-readiness
+  Type    Reason   Age                    From                               Message
+  ----    ------   ----                   ----                               -------
+  Normal  Created  23m (x321 over 2d6h)   kubelet, aks-nodepool1-12261238-3  Created container so-vfc-adapter-readiness
+  Normal  Pulling  3m3s (x323 over 2d6h)  kubelet, aks-nodepool1-12261238-3  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulled   3m2s (x323 over 2d6h)  kubelet, aks-nodepool1-12261238-3  Successfully pulled image "oomk8s/readiness-check:2.0.2"
