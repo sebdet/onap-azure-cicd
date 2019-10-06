@@ -1,4 +1,4 @@
-Starting Xvfb on display :92 with res 1280x1024x24
+Starting Xvfb on display :93 with res 1280x1024x24
 Executing robot tests at log level TRACE
 ==============================================================================
 Testsuites                                                                    
@@ -23,42 +23,43 @@ Basic DCAE Health Check                                               | FAIL |
 ------------------------------------------------------------------------------
 Basic DMAAP Data Router Health Check                                  | PASS |
 ------------------------------------------------------------------------------
-Basic DMAAP Message Router Health Check                               | PASS |
+Basic DMAAP Message Router Health Check                               | FAIL |
+500 != 200
 ------------------------------------------------------------------------------
 Basic DMAAP Bus Controller Health Check With Basic Auth               | PASS |
 ------------------------------------------------------------------------------
 Basic External API NBI Health Check                                   | FAIL |
-ConnectionError: HTTPConnectionPool(host='nbi.onap', port=8080): Max retries exceeded with url: /nbi/api/v4/status (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e475c850>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='nbi.onap', port=8080): Max retries exceeded with url: /nbi/api/v4/status (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0828190>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Log Elasticsearch Health Check                                  | FAIL |
-ConnectionError: HTTPConnectionPool(host='log-es.onap', port=9200): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e478ed10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='log-es.onap', port=9200): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0082fd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Log Kibana Health Check                                         | FAIL |
-ConnectionError: HTTPConnectionPool(host='log-kibana.onap', port=5601): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ff1f50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='log-kibana.onap', port=5601): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca083c9d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Log Logstash Health Check                                       | FAIL |
-ConnectionError: HTTPConnectionPool(host='log-ls-http.onap', port=9600): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ffc110>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='log-ls-http.onap', port=9600): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0094790>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Microservice Bus Health Check                                   | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /iui/microservices/default.html (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f86810>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /iui/microservices/default.html (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca00948d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Multicloud API Health Check                                     | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f90790>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca001c7d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Multicloud-pike API Health Check                                | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-pike/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e47a1e90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-pike/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0027a50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Multicloud-starlingx API Health Check                           | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-starlingx/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f9a290>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-starlingx/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca007c950>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Multicloud-titanium_cloud API Health Check                      | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-titaniumcloud/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3fa4310>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-titaniumcloud/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0090890>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Multicloud-vio API Health Check                                 | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-vio/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ff17d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-vio/v0/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca003ca10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Multicloud-k8s API Health Check                                 | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-k8s/v1/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3fb0050>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-k8s/v1/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0094410>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic OOF-Homing Health Check                                         | FAIL |
 Test timeout 20 seconds exceeded.
@@ -71,118 +72,118 @@ Basic OOF-CMSO Health Check                                           | FAIL |
 Basic Policy Health Check                                             | PASS |
 ------------------------------------------------------------------------------
 Basic Pomba AAI-context-builder Health Check                          | FAIL |
-ConnectionError: HTTPConnectionPool(host='pomba-aaictxbuilder.onap', port=9530): Max retries exceeded with url: /aaicontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f9a310>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='pomba-aaictxbuilder.onap', port=9530): Max retries exceeded with url: /aaicontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0047a10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba SDC-context-builder Health Check                          | FAIL |
-ConnectionError: HTTPConnectionPool(host='pomba-sdcctxbuilder.onap', port=9530): Max retries exceeded with url: /sdccontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ff1e10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='pomba-sdcctxbuilder.onap', port=9530): Max retries exceeded with url: /sdccontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0047cd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba Network-discovery-context-builder Health Check            | FAIL |
-ConnectionError: HTTPConnectionPool(host='pomba-networkdiscoveryctxbuilder.onap', port=9530): Max retries exceeded with url: /ndcontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ffc310>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='pomba-networkdiscoveryctxbuilder.onap', port=9530): Max retries exceeded with url: /ndcontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca008b9d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba Service-Decomposition Health Check                        | FAIL |
-ConnectionError: HTTPConnectionPool(host='pomba-servicedecomposition.onap', port=9532): Max retries exceeded with url: /service-decomposition/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e4724a10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='pomba-servicedecomposition.onap', port=9532): Max retries exceeded with url: /service-decomposition/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0082250>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba Network-Discovery-MicroService Health Check               | FAIL |
-ConnectionError: HTTPSConnectionPool(host='pomba-networkdiscovery.onap', port=9531): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f20e4ab1790>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPSConnectionPool(host='pomba-networkdiscovery.onap', port=9531): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fdca0828dd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba Pomba-Kibana Health Check                                 | FAIL |
-ConnectionError: HTTPSConnectionPool(host='pomba-kibana.onap', port=5601): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f20e3ff1190>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPSConnectionPool(host='pomba-kibana.onap', port=5601): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7fdc9ffad750>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba Elastic-Search Health Check                               | FAIL |
-ConnectionError: HTTPConnectionPool(host='pomba-es.onap', port=9200): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f30210>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='pomba-es.onap', port=9200): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0094e10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba Sdnc-Context-Builder Health Check                         | FAIL |
-ConnectionError: HTTPConnectionPool(host='pomba-sdncctxbuilder.onap', port=9530): Max retries exceeded with url: /sdnccontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e47a1d50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='pomba-sdncctxbuilder.onap', port=9530): Max retries exceeded with url: /sdnccontextbuilder/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ffc8a10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Pomba Context-Aggregator Health Check                           | FAIL |
-ConnectionError: HTTPConnectionPool(host='pomba-contextaggregator.onap', port=9529): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f36a90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='pomba-contextaggregator.onap', port=9529): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0842450>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Portal Health Check                                             | PASS |
 ------------------------------------------------------------------------------
-Basic SDC Health Check                                                (DMaaP:UP)
-| PASS |
+Basic SDC Health Check                                                | FAIL |
+SDC DOWN: 500 != 200
 ------------------------------------------------------------------------------
 Basic SDNC Health Check                                               | FAIL |
 401 != 200
 ------------------------------------------------------------------------------
 Basic SO Health Check                                                 | FAIL |
-ConnectionError: HTTPConnectionPool(host='so.onap', port=8080): Max retries exceeded with url: /manage/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f365d0>: Failed to establish a new connection: [Errno 111] Connection refused',))
+ConnectionError: HTTPConnectionPool(host='so.onap', port=8080): Max retries exceeded with url: /manage/health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca084b8d0>: Failed to establish a new connection: [Errno 111] Connection refused',))
 ------------------------------------------------------------------------------
 Basic UseCaseUI API Health Check                                      | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /iui/usecaseui/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ee9ad0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /iui/usecaseui/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff7bd90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC catalog API Health Check                                    | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/catalog/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3efbbd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/catalog/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff8ae10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC emsdriver API Health Check                                  | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/emsdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e47a1d50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/emsdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff7bbd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC gvnfmdriver API Health Check                                | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/gvnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3e80a50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/gvnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff90d10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC huaweivnfmdriver API Health Check                           | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/huaweivnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3e8db50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/huaweivnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff1de10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC jujuvnfmdriver API Health Check                             | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/jujuvnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3f37910>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/jujuvnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca0828310>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC multivimproxy API Health Check                              | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multivimproxy/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3e8b950>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multivimproxy/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff1bc90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC nokiav2driver API Health Check                              | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/NokiaSVNFM/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ea0ad0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/NokiaSVNFM/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff32d90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC nslcm API Health Check                                      | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/nslcm/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3efb3d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/nslcm/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff7bd10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC resmgr API Health Check                                     | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/resmgr/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3eaaa10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/resmgr/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff35d90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC vnflcm API Health Check                                     | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/vnflcm/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3eb2c10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/vnflcm/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff45e10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC vnfmgr API Health Check                                     | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/vnfmgr/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3e80710>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/vnfmgr/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff7b110>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC vnfres API Health Check                                     | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/vnfres/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ebea50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/vnfres/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff4cc90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC workflow API Health Check                                   | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/workflow/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3e49ad0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/workflow/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9fedbe10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC ztesdncdriver API Health Check                              | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/ztesdncdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3eb2490>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/ztesdncdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff1bd10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VFC ztevnfmdriver API Health Check                              | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/ztevnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3e8b490>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/ztevnfmdriver/v1/swagger.json (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9fee2c50>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic VID Health Check                                                | PASS |
 ------------------------------------------------------------------------------
 Basic VNFSDK Health Check                                             | FAIL |
-ConnectionError: HTTPConnectionPool(host='refrepo.onap', port=8702): Max retries exceeded with url: /onapapi/vnfsdk-marketplace/v1/PackageResource/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3e8d3d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='refrepo.onap', port=8702): Max retries exceeded with url: /onapapi/vnfsdk-marketplace/v1/PackageResource/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff1df10>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Holmes Rule Management API Health Check                         | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/holmes-rule-mgmt/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e4b70cd0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/holmes-rule-mgmt/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca08b59d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Holmes Engine Management API Health Check                       | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/holmes-engine-mgmt/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e4b663d0>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/holmes-engine-mgmt/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9fef0250>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Multicloud-fcaps API Health Check                               | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-fcaps/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e3ebeb90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/multicloud-fcaps/v1/healthcheck (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc9ff4c250>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic Modeling genericparser API Health Check                         | FAIL |
-ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/parser/v1/health_check (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f20e4b60a90>: Failed to establish a new connection: [Errno -2] Name or service not known',))
+ConnectionError: HTTPConnectionPool(host='msb-iag.onap', port=80): Max retries exceeded with url: /api/parser/v1/health_check (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdca07bf750>: Failed to establish a new connection: [Errno -2] Name or service not known',))
 ------------------------------------------------------------------------------
 Basic CDS Health Check                                                | PASS |
 ------------------------------------------------------------------------------
 Testsuites.Health-Check :: Test that ONAP components are available... | FAIL |
-61 critical tests, 14 passed, 47 failed
-61 tests total, 14 passed, 47 failed
+61 critical tests, 12 passed, 49 failed
+61 tests total, 12 passed, 49 failed
 ==============================================================================
 Testsuites                                                            | FAIL |
-61 critical tests, 14 passed, 47 failed
-61 tests total, 14 passed, 47 failed
+61 critical tests, 12 passed, 49 failed
+61 tests total, 12 passed, 49 failed
 ==============================================================================
-Output:  /share/logs/0002_ete_health/output.xml
-Log:     /share/logs/0002_ete_health/log.html
-Report:  /share/logs/0002_ete_health/report.html
+Output:  /share/logs/0003_ete_health/output.xml
+Log:     /share/logs/0003_ete_health/log.html
+Report:  /share/logs/0003_ete_health/report.html
