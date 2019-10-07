@@ -7,7 +7,7 @@ Labels:         app=so-monitoring
                 pod-template-hash=dbc4f7d74
                 release=cc697wonapci1lq3-so
 Annotations:    <none>
-Status:         Pending
+Status:         Running
 IP:             10.244.0.68
 IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-monitoring-dbc4f7d74
@@ -35,14 +35,14 @@ Init Containers:
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
 Containers:
   so-monitoring:
-    Container ID:   
+    Container ID:   docker://7bb1fc3028c5b84dfec981f49de98ad14c861e07ec35fab2f81831a1c782e3ce
     Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2
-    Image ID:       
+    Image ID:       docker-pullable://onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring@sha256:08c6bc490f54cb094b42620229ef79fe14adc6beac0aa3249da454bbc9545dbf
     Port:           9091/TCP
     Host Port:      0/TCP
-    State:          Waiting
-      Reason:       ImagePullBackOff
-    Ready:          False
+    State:          Running
+      Started:      Mon, 07 Oct 2019 12:52:32 +0000
+    Ready:          True
     Restart Count:  0
     Limits:
       cpu:     1
@@ -72,8 +72,8 @@ Containers:
 Conditions:
   Type              Status
   Initialized       True 
-  Ready             False 
-  ContainersReady   False 
+  Ready             True 
+  ContainersReady   True 
   PodScheduled      True 
 Volumes:
   logs:
@@ -101,7 +101,8 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type     Reason   Age                       From                               Message
-  ----     ------   ----                      ----                               -------
-  Normal   Pulling  12m (x855 over 3d4h)      kubelet, aks-nodepool1-12261238-2  Pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"
-  Warning  Failed   2m14s (x19270 over 3d4h)  kubelet, aks-nodepool1-12261238-2  Error: ImagePullBackOff
+  Type     Reason   Age                      From                               Message
+  ----     ------   ----                     ----                               -------
+  Warning  Failed   41m (x1030 over 3d20h)   kubelet, aks-nodepool1-12261238-2  Error: ErrImagePull
+  Normal   BackOff  21m (x23271 over 3d20h)  kubelet, aks-nodepool1-12261238-2  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/so-monitoring:96250-2"
+  Warning  Failed   11m (x23316 over 3d20h)  kubelet, aks-nodepool1-12261238-2  Error: ImagePullBackOff

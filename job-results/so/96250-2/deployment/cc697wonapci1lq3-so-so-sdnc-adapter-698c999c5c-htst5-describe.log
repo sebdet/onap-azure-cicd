@@ -7,21 +7,26 @@ Labels:         app=so-sdnc-adapter
                 pod-template-hash=698c999c5c
                 release=cc697wonapci1lq3-so
 Annotations:    <none>
-Status:         Pending
+Status:         Running
 IP:             10.244.3.3
 IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-sdnc-adapter-698c999c5c
 Containers:
   so-sdnc-adapter:
-    Container ID:   
+    Container ID:   docker://cc83d391e43eb66c52a2491c539f87aad9f1405cf0071391490e31dc68768c3f
     Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2
-    Image ID:       
+    Image ID:       docker-pullable://onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter@sha256:d5c450b7f2d17b66673b94e8738bd37f9be35567963ca907daf704a4b87fe3f2
     Port:           8086/TCP
     Host Port:      0/TCP
     State:          Waiting
-      Reason:       ImagePullBackOff
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Mon, 07 Oct 2019 12:59:17 +0000
+      Finished:     Mon, 07 Oct 2019 12:59:31 +0000
     Ready:          False
-    Restart Count:  0
+    Restart Count:  6
     Limits:
       cpu:     2
       memory:  4Gi
@@ -78,7 +83,10 @@ Node-Selectors:  <none>
 Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:
-  Type     Reason   Age                       From                               Message
-  ----     ------   ----                      ----                               -------
-  Warning  Failed   23m (x605 over 2d6h)      kubelet, aks-nodepool1-12261238-3  Failed to pull image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2": rpc error: code = Unknown desc = Error response from daemon: Get https://onapci-jenkins.westus2.cloudapp.azure.com:443/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
-  Normal   BackOff  3m16s (x13655 over 2d6h)  kubelet, aks-nodepool1-12261238-3  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2"
+  Type     Reason   Age                      From                               Message
+  ----     ------   ----                     ----                               -------
+  Warning  Failed   52m (x780 over 2d22h)    kubelet, aks-nodepool1-12261238-3  Failed to pull image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2": rpc error: code = Unknown desc = Error response from daemon: Get https://onapci-jenkins.westus2.cloudapp.azure.com:443/v2/: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+  Normal   Pulling  47m (x781 over 2d22h)    kubelet, aks-nodepool1-12261238-3  Pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2"
+  Normal   BackOff  22m (x17662 over 2d22h)  kubelet, aks-nodepool1-12261238-3  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/so/sdnc-adapter:96250-2"
+  Warning  Failed   12m (x17705 over 2d22h)  kubelet, aks-nodepool1-12261238-3  Error: ImagePullBackOff
+  Warning  BackOff  2m34s (x32 over 10m)     kubelet, aks-nodepool1-12261238-3  Back-off restarting failed container

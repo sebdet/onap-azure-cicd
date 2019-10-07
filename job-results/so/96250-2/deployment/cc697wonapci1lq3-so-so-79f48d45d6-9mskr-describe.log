@@ -13,7 +13,7 @@ IPs:            <none>
 Controlled By:  ReplicaSet/cc697wonapci1lq3-so-so-79f48d45d6
 Init Containers:
   so-readiness:
-    Container ID:  docker://2eb0f767e66842cbb8398d71b0c7609b831cb42730414ebb2d3f9d6fefe7ea4c
+    Container ID:  docker://b112f44dea157d9214e08898dd6649d6f6fde73225f432b23416a4c3be094796
     Image:         oomk8s/readiness-check:2.0.2
     Image ID:      docker-pullable://oomk8s/readiness-check@sha256:875814cc853d7d9b3227165740584c347884bc8c0d831b4148cb5f7952e4cbff
     Port:          <none>
@@ -24,14 +24,14 @@ Init Containers:
       --job-name
       cc697wonapci1lq3-so-so-mariadb-config-job
     State:          Running
-      Started:      Sun, 06 Oct 2019 20:50:33 +0000
+      Started:      Mon, 07 Oct 2019 12:57:49 +0000
     Last State:     Terminated
       Reason:       Error
       Exit Code:    1
-      Started:      Sun, 06 Oct 2019 20:40:29 +0000
-      Finished:     Sun, 06 Oct 2019 20:50:31 +0000
+      Started:      Mon, 07 Oct 2019 12:47:44 +0000
+      Finished:     Mon, 07 Oct 2019 12:57:46 +0000
     Ready:          False
-    Restart Count:  322
+    Restart Count:  418
     Environment:
       NAMESPACE:  onap (v1:metadata.namespace)
     Mounts:
@@ -105,6 +105,5 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
 Events:
   Type    Reason   Age                     From                               Message
   ----    ------   ----                    ----                               -------
-  Normal  Created  53m (x318 over 2d6h)    kubelet, aks-nodepool1-12261238-3  Created container so-readiness
-  Normal  Pulling  2m55s (x323 over 2d6h)  kubelet, aks-nodepool1-12261238-3  Pulling image "oomk8s/readiness-check:2.0.2"
-  Normal  Pulled   2m54s (x323 over 2d6h)  kubelet, aks-nodepool1-12261238-3  Successfully pulled image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulling  5m3s (x419 over 2d22h)  kubelet, aks-nodepool1-12261238-3  Pulling image "oomk8s/readiness-check:2.0.2"
+  Normal  Pulled   5m2s (x419 over 2d22h)  kubelet, aks-nodepool1-12261238-3  Successfully pulled image "oomk8s/readiness-check:2.0.2"
