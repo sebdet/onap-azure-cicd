@@ -74,7 +74,8 @@ node {
                     
                     if (BUILD_STATUS != 0) { 
                         sshagent (credentials: ['github-key-cicd-project']) {
-                            sh("mv ${WORKSPACE}/build.log ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/build/build.log")
+                            sh("mkdir -p /${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/build/")
+                            sh("mv ${WORKSPACE}/build.log ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/build")
                             sh("git --git-dir=${WORKSPACE}/onap-azure-cicd/.git --work-tree=${WORKSPACE}/onap-azure-cicd add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/build/*")
                             sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git --work-tree=${WORKSPACE}/onap-azure-cicd commit -m \"Build of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
                             sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git --work-tree=${WORKSPACE}/onap-azure-cicd push pipeline_project HEAD:master')
