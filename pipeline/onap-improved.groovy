@@ -71,6 +71,15 @@ node {
                     def buildScript = load "onap-azure-cicd/pipeline/build/${params.GERRIT_PROJECT}/build-component.groovy"
 
                     buildScript.buildComponent(params.GERRIT_PROJECT)
+                    sshagent (credentials: ['github-key-cicd-project']) {
+                        sh("git --git-dir=${WORKSPACE}/onap-azure-cicd/.git --work-tree=${WORKSPACE}/onap-azure-cicd add ${WORKSPACE}/onap-azure-cicd/job-results/${GERRIT_PROJECT}/${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}/build/*")
+                        sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git --work-tree=${WORKSPACE}/onap-azure-cicd commit -m \"Build of project: $GERRIT_PROJECT, review: $GERRIT_CHANGE_URL\"')
+                        sh('git --git-dir=${WORKSPACE}/onap-azure-cicd/.git --work-tree=${WORKSPACE}/onap-azure-cicd push pipeline_project HEAD:master')
+                    }
+                    
+                    sshagent (credentials: ['lf-key-onap-bot']) {
+                        sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"INFO: Build logs available, check the logs: https://github.com/sebdet/onap-azure-cicd/tree/master/job-results/$GERRIT_PROJECT/$GERRIT_CHANGE_NUMBER-$GERRIT_PATCHSET_NUMBER/build\"\' $GERRIT_PATCHSET_REVISION")
+                    }
                     sshagent (credentials: ['lf-key-onap-bot']) {
                         sh(script: "ssh -p $GERRIT_PORT OnapTesterBot@$GERRIT_HOST gerrit review --project $GERRIT_PROJECT --message \'\"$GERRIT_PROJECT Docker images SUCCESSFULLY built on AZURE\"\' $GERRIT_PATCHSET_REVISION")
                     }
