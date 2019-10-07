@@ -10,7 +10,7 @@ def buildComponent(componentPath='clamp') {
         mavenLocalRepo: '${WORKSPACE}/maven_repo',
         jdk: "OpenJDK-8") {
       // Run the maven build
-        sh "mvn -f ${componentPath}/pom.xml --batch-mode clean install -P docker -Dmaven.test.skip=true"
+        sh(returnStatus: true, script: "sh "mvn -f ${componentPath}/pom.xml --batch-mode --log-file build.log clean install -P docker -Dmaven.test.skip=true")
     }
 }
 
