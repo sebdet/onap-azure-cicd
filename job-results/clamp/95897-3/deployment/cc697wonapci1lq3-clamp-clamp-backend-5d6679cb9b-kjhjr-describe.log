@@ -1,0 +1,129 @@
+Name:           cc697wonapci1lq3-clamp-clamp-backend-5d6679cb9b-kjhjr
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-12261238-0/169.1.0.4
+Start Time:     Mon, 07 Oct 2019 15:33:54 +0000
+Labels:         app=clamp-backend
+                pod-template-hash=5d6679cb9b
+                release=cc697wonapci1lq3-clamp
+Annotations:    <none>
+Status:         Pending
+IP:             10.244.2.21
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-clamp-clamp-backend-5d6679cb9b
+Init Containers:
+  clamp-backend-readiness:
+    Container ID:  docker://7b9efeeba1d6a1da08ede434e99078ab1193e79f6c8dfabaa464fd178e46d566
+    Image:         oomk8s/readiness-check:2.0.0
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:7daa08b81954360a1111d03364febcb3dcfeb723bcc12ce3eb3ed3e53f2323ed
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/ready.py
+    Args:
+      --container-name
+      mariadb
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Mon, 07 Oct 2019 15:34:00 +0000
+      Finished:     Mon, 07 Oct 2019 15:34:44 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  clamp-backend-filebeat-onap:
+    Container ID:   docker://43bf42e37257b12541373bd999c5c7489a094b49d737b28f0db0b3cd1b39ab78
+    Image:          docker.elastic.co/beats/filebeat:5.5.0
+    Image ID:       docker-pullable://docker.elastic.co/beats/filebeat@sha256:fe7602b641ed8ee288f067f7b31ebde14644c4722d9f7960f176d621097a5942
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Mon, 07 Oct 2019 15:34:46 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /usr/share/filebeat/data from cc697wonapci1lq3-clamp-clamp-backend-data-filebeat (rw)
+      /usr/share/filebeat/filebeat.yml from cc697wonapci1lq3-clamp-clamp-backend-filebeat-conf (rw,path="filebeat.yml")
+      /var/log/onap from cc697wonapci1lq3-clamp-clamp-backend-logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+  clamp-backend:
+    Container ID:  
+    Image:         onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-backend:95897-3
+    Image ID:      
+    Port:          8443/TCP
+    Host Port:     0/TCP
+    Args:
+      -Dcom.att.eelf.logging.file=file:/opt/clamp/logback.xml
+      
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  1288490188800m
+    Requests:
+      cpu:      10m
+      memory:   800Mi
+    Liveness:   tcp-socket :8443 delay=120s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  tcp-socket :8443 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      SPRING_APPLICATION_JSON:  <set to the key 'spring_application_json' of config map 'cc697wonapci1lq3-clamp-clamp-backend'>  Optional: false
+    Mounts:
+      /opt/clamp/logback.xml from cc697wonapci1lq3-clamp-clamp-backend-config (rw,path="logback.xml")
+      /opt/clamp/sdc-controllers-config.json from cc697wonapci1lq3-clamp-clamp-backend-config (rw,path="sdc-controllers-config.json")
+      /var/log/onap from cc697wonapci1lq3-clamp-clamp-backend-logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  cc697wonapci1lq3-clamp-clamp-backend-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-clamp-clamp-backend
+    Optional:  false
+  cc697wonapci1lq3-clamp-clamp-backend-filebeat-conf:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-clamp-clamp-filebeat-configmap
+    Optional:  false
+  cc697wonapci1lq3-clamp-clamp-backend-data-filebeat:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  cc697wonapci1lq3-clamp-clamp-backend-logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                    From                               Message
+  ----     ------     ----                   ----                               -------
+  Normal   Scheduled  5m8s                   default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-clamp-clamp-backend-5d6679cb9b-kjhjr to aks-nodepool1-12261238-0
+  Normal   Pulling    5m5s                   kubelet, aks-nodepool1-12261238-0  Pulling image "oomk8s/readiness-check:2.0.0"
+  Normal   Pulled     5m3s                   kubelet, aks-nodepool1-12261238-0  Successfully pulled image "oomk8s/readiness-check:2.0.0"
+  Normal   Created    5m2s                   kubelet, aks-nodepool1-12261238-0  Created container clamp-backend-readiness
+  Normal   Started    5m2s                   kubelet, aks-nodepool1-12261238-0  Started container clamp-backend-readiness
+  Normal   Pulling    4m18s                  kubelet, aks-nodepool1-12261238-0  Pulling image "docker.elastic.co/beats/filebeat:5.5.0"
+  Normal   Pulled     4m17s                  kubelet, aks-nodepool1-12261238-0  Successfully pulled image "docker.elastic.co/beats/filebeat:5.5.0"
+  Normal   Started    4m16s                  kubelet, aks-nodepool1-12261238-0  Started container clamp-backend-filebeat-onap
+  Normal   Created    4m16s                  kubelet, aks-nodepool1-12261238-0  Created container clamp-backend-filebeat-onap
+  Normal   Pulling    3m34s (x3 over 4m16s)  kubelet, aks-nodepool1-12261238-0  Pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-backend:95897-3"
+  Warning  Failed     3m34s (x3 over 4m16s)  kubelet, aks-nodepool1-12261238-0  Failed to pull image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-backend:95897-3": rpc error: code = Unknown desc = Error response from daemon: manifest for onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-backend:95897-3 not found: manifest unknown: manifest unknown
+  Warning  Failed     3m34s (x3 over 4m16s)  kubelet, aks-nodepool1-12261238-0  Error: ErrImagePull
+  Warning  Failed     3m7s (x4 over 4m16s)   kubelet, aks-nodepool1-12261238-0  Error: ImagePullBackOff
+  Normal   BackOff    1s (x16 over 4m16s)    kubelet, aks-nodepool1-12261238-0  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-backend:95897-3"

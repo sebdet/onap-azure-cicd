@@ -1,0 +1,44 @@
+2019-10-07 15:34:00,632 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:01,564 - INFO - mariadb is ready!
+2019-10-07 15:34:01,564 - INFO - mariadb is not ready.
+2019-10-07 15:34:06,576 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:07,849 - INFO - mariadb is not ready.
+2019-10-07 15:34:12,868 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:14,110 - INFO - mariadb is not ready.
+2019-10-07 15:34:19,124 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:19,929 - INFO - mariadb is not ready.
+2019-10-07 15:34:24,938 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:26,029 - INFO - mariadb is not ready.
+2019-10-07 15:34:31,040 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:31,967 - INFO - mariadb is not ready.
+2019-10-07 15:34:36,980 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:37,960 - INFO - mariadb is not ready.
+2019-10-07 15:34:42,972 - INFO - Checking if mariadb  is ready
+2019-10-07 15:34:43,905 - INFO - mariadb is ready!
+2019/10/07 15:34:46.421061 beat.go:285: INFO Home path: [/usr/share/filebeat] Config path: [/usr/share/filebeat] Data path: [/usr/share/filebeat/data] Logs path: [/usr/share/filebeat/logs]
+2019/10/07 15:34:46.421099 beat.go:186: INFO Setup Beat: filebeat; Version: 5.5.0
+2019/10/07 15:34:46.421195 metrics.go:23: INFO Metrics logging every 30s
+2019/10/07 15:34:46.421195 logstash.go:90: INFO Max Retries set to: 3
+2019/10/07 15:34:46.421293 outputs.go:108: INFO Activated logstash as output plugin.
+2019/10/07 15:34:46.421411 publish.go:295: INFO Publisher name: cc697wonapci1lq3-clamp-clamp-backend-5d6679cb9b-kjhjr
+2019/10/07 15:34:46.421715 async.go:63: INFO Flush Interval set to: 1s
+2019/10/07 15:34:46.421737 async.go:64: INFO Max Bulk Size set to: 2048
+2019/10/07 15:34:46.422273 beat.go:221: INFO filebeat start running.
+2019/10/07 15:34:46.422340 registrar.go:68: INFO No registry file found under: /usr/share/filebeat/data/registry. Creating a new registry file.
+2019/10/07 15:34:46.442787 registrar.go:106: INFO Loading registrar data from /usr/share/filebeat/data/registry
+2019/10/07 15:34:46.443118 registrar.go:123: INFO States Loaded from registrar: 0
+2019/10/07 15:34:46.443162 crawler.go:38: INFO Loading Prospectors: 1
+2019/10/07 15:34:46.443239 registrar.go:236: INFO Starting Registrar
+2019/10/07 15:34:46.443285 sync.go:41: INFO Start sending events to output
+2019/10/07 15:34:46.443424 prospector_log.go:65: INFO Prospector with previous states loaded: 0
+2019/10/07 15:34:46.443543 prospector.go:124: INFO Starting prospector of type: log; id: 12576369028753478767 
+2019/10/07 15:34:46.443562 crawler.go:58: INFO Loading and starting Prospectors completed. Enabled prospectors: 1
+2019/10/07 15:34:46.443437 spooler.go:63: INFO Starting spooler: spool_size: 2048; idle_timeout: 5s
+2019/10/07 15:35:16.421419 metrics.go:39: INFO Non-zero metrics in the last 30s: registrar.writes=1
+2019/10/07 15:35:46.421541 metrics.go:34: INFO No non-zero metrics in the last 30s
+2019/10/07 15:36:16.421533 metrics.go:34: INFO No non-zero metrics in the last 30s
+2019/10/07 15:36:46.421451 metrics.go:34: INFO No non-zero metrics in the last 30s
+2019/10/07 15:37:16.421475 metrics.go:34: INFO No non-zero metrics in the last 30s
+2019/10/07 15:37:46.421501 metrics.go:34: INFO No non-zero metrics in the last 30s
+2019/10/07 15:38:16.421481 metrics.go:34: INFO No non-zero metrics in the last 30s
+2019/10/07 15:38:46.421478 metrics.go:34: INFO No non-zero metrics in the last 30s

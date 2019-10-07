@@ -1,0 +1,112 @@
+Name:           cc697wonapci1lq3-clamp-clamp-69648b6476-kvcvr
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-12261238-0/169.1.0.4
+Start Time:     Mon, 07 Oct 2019 15:33:55 +0000
+Labels:         app=clamp
+                pod-template-hash=69648b6476
+                release=cc697wonapci1lq3-clamp
+Annotations:    <none>
+Status:         Pending
+IP:             10.244.2.25
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-clamp-clamp-69648b6476
+Init Containers:
+  clamp-readiness:
+    Container ID:  docker://4f134ed0a663e3a456f80c68499088a7ea18f405188238319c8abcfe042e95f5
+    Image:         oomk8s/readiness-check:2.0.0
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:7daa08b81954360a1111d03364febcb3dcfeb723bcc12ce3eb3ed3e53f2323ed
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/ready.py
+    Args:
+      --container-name
+      clamp-backend
+    State:          Running
+      Started:      Mon, 07 Oct 2019 15:34:23 +0000
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  clamp-filebeat-onap:
+    Container ID:   
+    Image:          docker.elastic.co/beats/filebeat:5.5.0
+    Image ID:       
+    Port:           <none>
+    Host Port:      <none>
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /usr/share/filebeat/data from cc697wonapci1lq3-clamp-clamp-data-filebeat (rw)
+      /usr/share/filebeat/filebeat.yml from cc697wonapci1lq3-clamp-clamp-filebeat-conf (rw,path="filebeat.yml")
+      /var/log/nginx/ from cc697wonapci1lq3-clamp-clamp-logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+  clamp:
+    Container ID:   
+    Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-frontend:95897-3
+    Image ID:       
+    Port:           443/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  200Mi
+    Requests:
+      cpu:        10m
+      memory:     50Mi
+    Liveness:     tcp-socket :443 delay=120s timeout=1s period=10s #success=1 #failure=3
+    Readiness:    tcp-socket :443 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /etc/nginx/conf.d/nginx.conf from cc697wonapci1lq3-clamp-clamp-config (rw,path="nginx.conf")
+      /var/log/nginx/ from cc697wonapci1lq3-clamp-clamp-logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type              Status
+  Initialized       False 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  cc697wonapci1lq3-clamp-clamp-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-clamp-clamp
+    Optional:  false
+  cc697wonapci1lq3-clamp-clamp-filebeat-conf:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-clamp-clamp-filebeat-configmap
+    Optional:  false
+  cc697wonapci1lq3-clamp-clamp-data-filebeat:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  cc697wonapci1lq3-clamp-clamp-logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age    From                               Message
+  ----    ------     ----   ----                               -------
+  Normal  Scheduled  5m7s   default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-clamp-clamp-69648b6476-kvcvr to aks-nodepool1-12261238-0
+  Normal  Pulling    5m3s   kubelet, aks-nodepool1-12261238-0  Pulling image "oomk8s/readiness-check:2.0.0"
+  Normal  Pulled     4m47s  kubelet, aks-nodepool1-12261238-0  Successfully pulled image "oomk8s/readiness-check:2.0.0"
+  Normal  Created    4m39s  kubelet, aks-nodepool1-12261238-0  Created container clamp-readiness
+  Normal  Started    4m39s  kubelet, aks-nodepool1-12261238-0  Started container clamp-readiness

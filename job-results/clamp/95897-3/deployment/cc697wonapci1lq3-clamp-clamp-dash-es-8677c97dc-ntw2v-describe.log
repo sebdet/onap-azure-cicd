@@ -1,0 +1,110 @@
+Name:           cc697wonapci1lq3-clamp-clamp-dash-es-8677c97dc-ntw2v
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-12261238-0/169.1.0.4
+Start Time:     Mon, 07 Oct 2019 15:33:55 +0000
+Labels:         app=clamp-dash-es
+                pod-template-hash=8677c97dc
+                release=cc697wonapci1lq3-clamp
+Annotations:    <none>
+Status:         Pending
+IP:             10.244.2.22
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-clamp-clamp-dash-es-8677c97dc
+Init Containers:
+  init-sysctl:
+    Container ID:  docker://b5e7f9fd964994de05a25c18d5969d5e487e6bdbe1cb2fe8cd79b4a0917385b5
+    Image:         registry.hub.docker.com/library/busybox:latest
+    Image ID:      docker-pullable://busybox@sha256:fe301db49df08c384001ed752dff6d52b4305a73a7f608f21528048e8a08b51e
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+      sysctl -w vm.max_map_count=262144
+      mkdir -p /usr/share/elasticsearch/logs
+      mkdir -p /usr/share/elasticsearch/data
+      chmod -R 777 /usr/share/elasticsearch
+      
+    State:          Terminated
+      Reason:       Completed
+      Exit Code:    0
+      Started:      Mon, 07 Oct 2019 15:34:01 +0000
+      Finished:     Mon, 07 Oct 2019 15:34:01 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /usr/share/elasticsearch/data/ from cc697wonapci1lq3-clamp-clamp-dash-es-data (rw)
+      /usr/share/elasticsearch/logs/ from cc697wonapci1lq3-clamp-clamp-dash-es-logs (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  clamp-dash-es:
+    Container ID:   
+    Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-dashboard-elasticsearch:95897-3
+    Image ID:       
+    Ports:          9200/TCP, 9300/TCP
+    Host Ports:     0/TCP, 0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  4Gi
+    Requests:
+      cpu:        10m
+      memory:     2560Mi
+    Liveness:     tcp-socket :9200 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:    tcp-socket :9300 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /etc/localtime from localtime (ro)
+      /usr/share/elasticsearch/config/elasticsearch.yml from cc697wonapci1lq3-clamp-clamp-dash-es-config (rw,path="elasticsearch.yml")
+      /usr/share/elasticsearch/data/ from cc697wonapci1lq3-clamp-clamp-dash-es-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  localtime:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/localtime
+    HostPathType:  
+  cc697wonapci1lq3-clamp-clamp-dash-es-config:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-clamp-clamp-dash-es-configmap
+    Optional:  false
+  cc697wonapci1lq3-clamp-clamp-dash-es-data:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cc697wonapci1lq3-clamp-clamp-dash-es
+    ReadOnly:   false
+  cc697wonapci1lq3-clamp-clamp-dash-es-logs:
+    Type:          HostPath (bare host directory volume)
+    Path:          /dockerdata-nfs/cc697wonapci1lq3-clamp/clamp
+    HostPathType:  
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age                    From                               Message
+  ----     ------     ----                   ----                               -------
+  Normal   Scheduled  5m9s                   default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-clamp-clamp-dash-es-8677c97dc-ntw2v to aks-nodepool1-12261238-0
+  Normal   Pulling    5m5s                   kubelet, aks-nodepool1-12261238-0  Pulling image "registry.hub.docker.com/library/busybox:latest"
+  Normal   Pulled     5m2s                   kubelet, aks-nodepool1-12261238-0  Successfully pulled image "registry.hub.docker.com/library/busybox:latest"
+  Normal   Created    5m2s                   kubelet, aks-nodepool1-12261238-0  Created container init-sysctl
+  Normal   Started    5m1s                   kubelet, aks-nodepool1-12261238-0  Started container init-sysctl
+  Warning  Failed     3m39s (x4 over 4m47s)  kubelet, aks-nodepool1-12261238-0  Error: ImagePullBackOff
+  Normal   Pulling    3m25s (x4 over 5m)     kubelet, aks-nodepool1-12261238-0  Pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-dashboard-elasticsearch:95897-3"
+  Warning  Failed     3m25s (x4 over 4m48s)  kubelet, aks-nodepool1-12261238-0  Failed to pull image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-dashboard-elasticsearch:95897-3": rpc error: code = Unknown desc = Error response from daemon: manifest for onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-dashboard-elasticsearch:95897-3 not found: manifest unknown: manifest unknown
+  Warning  Failed     3m25s (x4 over 4m48s)  kubelet, aks-nodepool1-12261238-0  Error: ErrImagePull
+  Normal   BackOff    3m12s (x5 over 4m47s)  kubelet, aks-nodepool1-12261238-0  Back-off pulling image "onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-dashboard-elasticsearch:95897-3"

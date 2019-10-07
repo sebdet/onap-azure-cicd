@@ -1,0 +1,6 @@
+cc697wonapci1lq3-clamp-clamp-69648b6476-kvcvr                     0/2     Init:0/1           0          5m6s
+cc697wonapci1lq3-clamp-clamp-backend-5d6679cb9b-kjhjr             1/2     ImagePullBackOff   0          5m7s
+cc697wonapci1lq3-clamp-clamp-dash-es-8677c97dc-ntw2v              0/1     ImagePullBackOff   0          5m7s
+cc697wonapci1lq3-clamp-clamp-dash-kibana-5987f8c896-gxgkn         0/1     Init:0/1           0          5m7s
+cc697wonapci1lq3-clamp-clamp-dash-logstash-6dd774fcbb-6l7fc       0/1     Init:0/1           0          5m6s
+cc697wonapci1lq3-clamp-mariadb-856b99b844-c9l89                   1/1     Running            0          5m6s

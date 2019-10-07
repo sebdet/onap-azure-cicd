@@ -1,0 +1,93 @@
+Name:           cc697wonapci1lq3-clamp-clamp-dash-kibana-5987f8c896-gxgkn
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-12261238-0/169.1.0.4
+Start Time:     Mon, 07 Oct 2019 15:33:55 +0000
+Labels:         app=clamp-dash-kibana
+                pod-template-hash=5987f8c896
+                release=cc697wonapci1lq3-clamp
+Annotations:    <none>
+Status:         Pending
+IP:             10.244.2.20
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-clamp-clamp-dash-kibana-5987f8c896
+Init Containers:
+  clamp-dash-kibana-readiness:
+    Container ID:  docker://62999e49b994a8f87f8d63082b6a948970dae531a128021484302fcf203bf513
+    Image:         oomk8s/readiness-check:2.0.0
+    Image ID:      docker-pullable://oomk8s/readiness-check@sha256:7daa08b81954360a1111d03364febcb3dcfeb723bcc12ce3eb3ed3e53f2323ed
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /root/ready.py
+    Args:
+      --container-name
+      clamp-dash-es
+    State:          Running
+      Started:      Mon, 07 Oct 2019 15:33:59 +0000
+    Ready:          False
+    Restart Count:  0
+    Environment:
+      NAMESPACE:  onap (v1:metadata.namespace)
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Containers:
+  clamp-dash-kibana:
+    Container ID:   
+    Image:          onapci-jenkins.westus2.cloudapp.azure.com:443/new-build/clamp-dashboard-kibana:95897-3
+    Image ID:       
+    Port:           5601/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  2Gi
+    Requests:
+      cpu:        10m
+      memory:     750Mi
+    Liveness:     tcp-socket :5601 delay=360s timeout=1s period=10s #success=1 #failure=3
+    Readiness:    tcp-socket :5601 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:  <none>
+    Mounts:
+      /etc/localtime from localtime (ro)
+      /usr/share/kibana/config/keystore/ from cc697wonapci1lq3-clamp-clamp-dash-kibana-aaf-pem-certs (rw)
+      /usr/share/kibana/config/kibana.yml from cc697wonapci1lq3-clamp-clamp-dash-kibana (rw,path="kibana.yml")
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type              Status
+  Initialized       False 
+  Ready             False 
+  ContainersReady   False 
+  PodScheduled      True 
+Volumes:
+  localtime:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/localtime
+    HostPathType:  
+  cc697wonapci1lq3-clamp-clamp-dash-kibana:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      cc697wonapci1lq3-clamp-clamp-dash-kibana
+    Optional:  false
+  cc697wonapci1lq3-clamp-clamp-dash-kibana-aaf-pem-certs:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  cc697wonapci1lq3-clamp-clamp-dash-kibana-aaf-pem-keys
+    Optional:    false
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From                               Message
+  ----    ------     ----  ----                               -------
+  Normal  Scheduled  5m8s  default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-clamp-clamp-dash-kibana-5987f8c896-gxgkn to aks-nodepool1-12261238-0
+  Normal  Pulling    5m6s  kubelet, aks-nodepool1-12261238-0  Pulling image "oomk8s/readiness-check:2.0.0"
+  Normal  Pulled     5m5s  kubelet, aks-nodepool1-12261238-0  Successfully pulled image "oomk8s/readiness-check:2.0.0"
+  Normal  Created    5m4s  kubelet, aks-nodepool1-12261238-0  Created container clamp-dash-kibana-readiness
+  Normal  Started    5m4s  kubelet, aks-nodepool1-12261238-0  Started container clamp-dash-kibana-readiness

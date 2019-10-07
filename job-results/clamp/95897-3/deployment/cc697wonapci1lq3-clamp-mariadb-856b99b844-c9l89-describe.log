@@ -1,0 +1,90 @@
+Name:           cc697wonapci1lq3-clamp-mariadb-856b99b844-c9l89
+Namespace:      onap
+Priority:       0
+Node:           aks-nodepool1-12261238-0/169.1.0.4
+Start Time:     Mon, 07 Oct 2019 15:33:55 +0000
+Labels:         app=mariadb
+                pod-template-hash=856b99b844
+                release=cc697wonapci1lq3-clamp
+Annotations:    <none>
+Status:         Running
+IP:             10.244.2.24
+IPs:            <none>
+Controlled By:  ReplicaSet/cc697wonapci1lq3-clamp-mariadb-856b99b844
+Containers:
+  mariadb:
+    Container ID:   docker://d932dc61ff99441e35447babbbfa3962533ef1f43747f6a274e7ea88a442dfb2
+    Image:          nexus3.onap.org:10001/mariadb:10.3.12
+    Image ID:       docker-pullable://nexus3.onap.org:10001/mariadb@sha256:5e170779a154cce2511966ea94e9197ec74dc57feb899670f056d16e3d745e77
+    Port:           3306/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 07 Oct 2019 15:34:23 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  500Mi
+    Requests:
+      cpu:      10m
+      memory:   200Mi
+    Liveness:   tcp-socket :3306 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  tcp-socket :3306 delay=10s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      MYSQL_ROOT_PASSWORD:  <set to the key 'db-root-password' in secret 'cc697wonapci1lq3-clamp-mariadb'>  Optional: false
+    Mounts:
+      /docker-entrypoint-initdb.d/bulkload/ from docker-entrypoint-bulkload (rw)
+      /docker-entrypoint-initdb.d/drop/ from docker-entrypoint-clds-drop (rw)
+      /docker-entrypoint-initdb.d/load-sql-files-tests-automation.sh from docker-entrypoint-initdb (rw,path="load-sql-files-tests-automation.sh")
+      /etc/localtime from localtime (ro)
+      /etc/mysql/conf.d/conf1/ from clamp-mariadb-conf (rw)
+      /var/lib/mysql from clamp-mariadb-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-vp7rc (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  clamp-mariadb-data:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  cc697wonapci1lq3-clamp-mariadb
+    ReadOnly:   false
+  docker-entrypoint-initdb:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      clamp-entrypoint-initdb-configmap
+    Optional:  false
+  docker-entrypoint-clds-drop:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      clamp-entrypoint-drop-configmap
+    Optional:  false
+  docker-entrypoint-bulkload:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      clamp-entrypoint-bulkload-configmap
+    Optional:  false
+  clamp-mariadb-conf:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      clamp-mariadb-conf-configmap
+    Optional:  false
+  localtime:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/localtime
+    HostPathType:  
+  default-token-vp7rc:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-vp7rc
+    Optional:    false
+QoS Class:       Burstable
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason     Age    From                               Message
+  ----     ------     ----   ----                               -------
+  Normal   Scheduled  5m8s   default-scheduler                  Successfully assigned onap/cc697wonapci1lq3-clamp-mariadb-856b99b844-c9l89 to aks-nodepool1-12261238-0
+  Normal   Pulling    5m4s   kubelet, aks-nodepool1-12261238-0  Pulling image "nexus3.onap.org:10001/mariadb:10.3.12"
+  Normal   Pulled     4m49s  kubelet, aks-nodepool1-12261238-0  Successfully pulled image "nexus3.onap.org:10001/mariadb:10.3.12"
+  Normal   Created    4m40s  kubelet, aks-nodepool1-12261238-0  Created container mariadb
+  Normal   Started    4m40s  kubelet, aks-nodepool1-12261238-0  Started container mariadb
+  Warning  Unhealthy  4m28s  kubelet, aks-nodepool1-12261238-0  Liveness probe failed: dial tcp 10.244.2.24:3306: connect: connection refused
